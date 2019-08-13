@@ -16,8 +16,8 @@ class Map extends React.Component {
         });
 
         map.on('load', function () {
-            map.addSource('river-building', { 
-                type: 'geojson', 
+            map.addSource('river-building', {
+                type: 'geojson',
                 data: RB
             });
 
@@ -34,7 +34,7 @@ class Map extends React.Component {
                     "line-color": "#7C39BF",
                     "line-width": 3
                 },
-                "filter": ["all",["==", "floor" , 1]]
+                "filter": ["all", ["==", "floor", 1]]
             });
             map.addLayer({
                 "id": "L1-2",
@@ -47,7 +47,7 @@ class Map extends React.Component {
                     "fill-color": "#00D0FE",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "room"],["==", "floor" , 1]]
+                "filter": ["all", ["==", "type", "room"], ["==", "floor", 1]]
             }, "L1-1");
 
             map.addLayer({
@@ -64,8 +64,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 1], [ "==", "type", "room"]]
-            }); 
+                "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
+            });
             map.addLayer({
                 "id": "L1-4",
                 "type": "symbol",
@@ -81,8 +81,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 1], [ "==", "type", "washroom"]]
-            }); 
+                "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
+            });
             map.addLayer({
                 "id": "L1-5",
                 "type": "symbol",
@@ -98,8 +98,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 1], [ "==", "type", "elevator"]]
-            }); 
+                "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
+            });
             map.addLayer({
                 "id": "L1-6",
                 "type": "symbol",
@@ -115,8 +115,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 1], [ "==", "type", "stairs"]]
-            }); 
+                "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
+            });
             map.addLayer({
                 "id": "L1-7",
                 "type": "fill",
@@ -128,7 +128,7 @@ class Map extends React.Component {
                     "fill-color": "yellow",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "washroom"],["==", "floor" , 1]]
+                "filter": ["all", ["==", "type", "washroom"], ["==", "floor", 1]]
             }, "L1-1");
             map.addLayer({
                 "id": "L1-8",
@@ -141,7 +141,7 @@ class Map extends React.Component {
                     "fill-color": "white",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "hallway"],["==", "floor" , 1]]
+                "filter": ["all", ["==", "type", "hallway"], ["==", "floor", 1]]
             }, "L1-1");
             map.addLayer({
                 "id": "L1-9",
@@ -154,7 +154,7 @@ class Map extends React.Component {
                     "fill-color": "red",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "elevator"],["==", "floor" , 1]]
+                "filter": ["all", ["==", "type", "elevator"], ["==", "floor", 1]]
             }, "L1-1");
             map.addLayer({
                 "id": "L1-10",
@@ -167,10 +167,10 @@ class Map extends React.Component {
                     "fill-color": "blue",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "stairs"],["==", "floor" , 1]]
+                "filter": ["all", ["==", "type", "stairs"], ["==", "floor", 1]]
             }, "L1-1");
-            
-            
+
+
             // LAYER L2 ////////////////////////////////////////////////////
 
 
@@ -185,7 +185,7 @@ class Map extends React.Component {
                     "line-color": "#7C39BF",
                     "line-width": 3
                 },
-                "filter": ["all",["==", "floor" , 2]]
+                "filter": ["all", ["==", "floor", 2]]
             });
             map.addLayer({
                 "id": "L2-2",
@@ -198,7 +198,7 @@ class Map extends React.Component {
                     "fill-color": "#00D0FE",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "room"],["==", "floor" , 2]]
+                "filter": ["all", ["==", "type", "room"], ["==", "floor", 2]]
             }, "L1-1");
 
             map.addLayer({
@@ -215,8 +215,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 2], [ "==", "type", "room"]]
-            }); 
+                "filter": ["all", ["==", "floor", 2], ["==", "type", "room"]]
+            });
             map.addLayer({
                 "id": "L2-4",
                 "type": "symbol",
@@ -232,8 +232,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 2], [ "==", "type", "washroom"]]
-            }); 
+                "filter": ["all", ["==", "floor", 2], ["==", "type", "washroom"]]
+            });
             map.addLayer({
                 "id": "L2-5",
                 "type": "symbol",
@@ -249,8 +249,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 2], [ "==", "type", "elevator"]]
-            }); 
+                "filter": ["all", ["==", "floor", 2], ["==", "type", "elevator"]]
+            });
             map.addLayer({
                 "id": "L2-6",
                 "type": "symbol",
@@ -266,8 +266,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 2], [ "==", "type", "stairs"]]
-            }); 
+                "filter": ["all", ["==", "floor", 2], ["==", "type", "stairs"]]
+            });
             map.addLayer({
                 "id": "L2-7",
                 "type": "fill",
@@ -279,7 +279,7 @@ class Map extends React.Component {
                     "fill-color": "yellow",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "washroom"],["==", "floor" , 2]]
+                "filter": ["all", ["==", "type", "washroom"], ["==", "floor", 2]]
             }, "L1-1");
             map.addLayer({
                 "id": "L2-8",
@@ -292,7 +292,7 @@ class Map extends React.Component {
                     "fill-color": "white",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "hallway"],["==", "floor" , 2]]
+                "filter": ["all", ["==", "type", "hallway"], ["==", "floor", 2]]
             }, "L1-1");
             map.addLayer({
                 "id": "L2-9",
@@ -305,7 +305,7 @@ class Map extends React.Component {
                     "fill-color": "red",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "elevator"],["==", "floor" , 2]]
+                "filter": ["all", ["==", "type", "elevator"], ["==", "floor", 2]]
             }, "L1-1");
             map.addLayer({
                 "id": "L2-10",
@@ -318,8 +318,8 @@ class Map extends React.Component {
                     "fill-color": "blue",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "stairs"],["==", "floor" , 2]]
-            }, "L1-1"); 
+                "filter": ["all", ["==", "type", "stairs"], ["==", "floor", 2]]
+            }, "L1-1");
 
             // LAYER L3 ////////////////////////////////////////////////////
 
@@ -335,7 +335,7 @@ class Map extends React.Component {
                     "line-color": "#7C39BF",
                     "line-width": 3
                 },
-                "filter": ["all",["==", "floor" , 3]]
+                "filter": ["all", ["==", "floor", 3]]
             });
             map.addLayer({
                 "id": "L3-2",
@@ -348,7 +348,7 @@ class Map extends React.Component {
                     "fill-color": "#00D0FE",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "room"],["==", "floor" , 3]]
+                "filter": ["all", ["==", "type", "room"], ["==", "floor", 3]]
             }, "L1-1");
 
             map.addLayer({
@@ -365,8 +365,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 3], [ "==", "type", "room"]]
-            }); 
+                "filter": ["all", ["==", "floor", 3], ["==", "type", "room"]]
+            });
             map.addLayer({
                 "id": "L3-4",
                 "type": "symbol",
@@ -382,8 +382,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 3], [ "==", "type", "washroom"]]
-            }); 
+                "filter": ["all", ["==", "floor", 3], ["==", "type", "washroom"]]
+            });
             map.addLayer({
                 "id": "L3-5",
                 "type": "symbol",
@@ -399,8 +399,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 3], [ "==", "type", "elevator"]]
-            }); 
+                "filter": ["all", ["==", "floor", 3], ["==", "type", "elevator"]]
+            });
             map.addLayer({
                 "id": "L3-6",
                 "type": "symbol",
@@ -416,8 +416,8 @@ class Map extends React.Component {
                 "paint": {
                     "text-color": "#ffffff"
                 },
-                "filter": ["all",["==", "floor" , 3], [ "==", "type", "stairs"]]
-            }); 
+                "filter": ["all", ["==", "floor", 3], ["==", "type", "stairs"]]
+            });
             map.addLayer({
                 "id": "L3-7",
                 "type": "fill",
@@ -429,7 +429,7 @@ class Map extends React.Component {
                     "fill-color": "yellow",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "washroom"],["==", "floor" , 3]]
+                "filter": ["all", ["==", "type", "washroom"], ["==", "floor", 3]]
             }, "L1-1");
             map.addLayer({
                 "id": "L3-8",
@@ -442,7 +442,7 @@ class Map extends React.Component {
                     "fill-color": "white",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "hallway"],["==", "floor" , 3]]
+                "filter": ["all", ["==", "type", "hallway"], ["==", "floor", 3]]
             }, "L1-1");
             map.addLayer({
                 "id": "L3-9",
@@ -455,7 +455,7 @@ class Map extends React.Component {
                     "fill-color": "red",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "elevator"],["==", "floor" , 3]]
+                "filter": ["all", ["==", "type", "elevator"], ["==", "floor", 3]]
             }, "L1-1");
             map.addLayer({
                 "id": "L3-10",
@@ -468,104 +468,137 @@ class Map extends React.Component {
                     "fill-color": "blue",
                     "fill-opacity": 0.75
                 },
-                "filter": ["all",["==", "type" , "stairs"],["==", "floor" , 3]]
-            }, "L1-1");    
-        }); 
-        document.getElementById("L1").onclick = function L1(){
-           
-            for(var i = 1 ; i < 11; i++){
-                map.setLayoutProperty( "L2-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L3-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L1-"+i, 'visibility', 'visible');
+                "filter": ["all", ["==", "type", "stairs"], ["==", "floor", 3]]
+            }, "L1-1");
+        });
+        document.getElementById("L1").onclick = function L1() {
+
+            for (var i = 1; i < 11; i++) {
+                map.setLayoutProperty("L2-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L3-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L1-" + i, 'visibility', 'visible');
             }
-            for(var k = 1 ; k < 4; k++){
-                document.getElementById("L"+k).className = "";
+            for (var k = 1; k < 4; k++) {
+                document.getElementById("L" + k).className = "";
             }
-            document.getElementById("L1").className = "active";  
+            document.getElementById("L1").className = "active";
         };
-        document.getElementById("L2").onclick = function L2(){
-            
-            for(var i = 1 ; i < 11; i++){
-                map.setLayoutProperty( "L1-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L3-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L2-"+i, 'visibility', 'visible');
+        document.getElementById("L2").onclick = function L2() {
+
+            for (var i = 1; i < 11; i++) {
+                map.setLayoutProperty("L1-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L3-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L2-" + i, 'visibility', 'visible');
             }
-            for(var k = 1 ; k < 4; k++){
-                document.getElementById("L"+k).className = "";
+            for (var k = 1; k < 4; k++) {
+                document.getElementById("L" + k).className = "";
             }
             document.getElementById("L2").className = "active";
         };
-        document.getElementById("L3").onclick = function L3(){
-            
-            for(var i = 1 ; i < 11; i++){
-                map.setLayoutProperty( "L1-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L2-"+i, 'visibility', 'none');
-                map.setLayoutProperty( "L3-"+i, 'visibility', 'visible');
+        document.getElementById("L3").onclick = function L3() {
+
+            for (var i = 1; i < 11; i++) {
+                map.setLayoutProperty("L1-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L2-" + i, 'visibility', 'none');
+                map.setLayoutProperty("L3-" + i, 'visibility', 'visible');
             }
-            for(var k = 1 ; k < 4; k++){
-                document.getElementById("L"+k).className = "";
+            for (var k = 1; k < 4; k++) {
+                document.getElementById("L" + k).className = "";
             }
             document.getElementById("L3").className = "active";
-        }; 
+        };
         map.on('click', 'L1-2', function (e) {
-            new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML("Room No.: " + e.features[0].properties.room)
-            .addTo(map);
-            });
-             
-            // Change the cursor to a pointer when the mouse is over the states layer.
-            map.on('mouseenter', 'L1-2', function () {
+            document.getElementById("right-side-bar").classList.remove("col-1");
+            document.getElementById("right-side-bar").classList.add("col-3");
+            document.getElementById("map-main").classList.remove("col-11");
+            document.getElementById("map-main").classList.add("col-9");
+
+
+            document.getElementById("right-side-bar").style.display = "block";
+            document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'L1-2', function () {
             map.getCanvas().style.cursor = 'pointer';
-            });
-             
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'L1-2', function () {
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'L1-2', function () {
             map.getCanvas().style.cursor = '';
-        });   
+        });
         map.on('click', 'L2-2', function (e) {
-            new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML("Room No.: " + e.features[0].properties.room)
-            .addTo(map);
-            });
-             
-            // Change the cursor to a pointer when the mouse is over the states layer.
-            map.on('mouseenter', 'L2-2', function () {
+            document.getElementById("right-side-bar").classList.remove("col-1");
+            document.getElementById("right-side-bar").classList.add("col-3");
+            document.getElementById("map-main").classList.remove("col-11");
+            document.getElementById("map-main").classList.add("col-9");
+
+
+            document.getElementById("right-side-bar").style.display = "block";
+            document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'L2-2', function () {
             map.getCanvas().style.cursor = 'pointer';
-            });
-             
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'L2-2', function () {
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'L2-2', function () {
             map.getCanvas().style.cursor = '';
-        });  
+        });
         map.on('click', 'L3-2', function (e) {
-            new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML("Room No.: " + e.features[0].properties.room)
-            .addTo(map);
-            });
-             
-            // Change the cursor to a pointer when the mouse is over the states layer.
-            map.on('mouseenter', 'L3-2', function () {
+            document.getElementById("right-side-bar").classList.remove("col-1");
+            document.getElementById("right-side-bar").classList.add("col-3");
+            document.getElementById("map-main").classList.remove("col-11");
+            document.getElementById("map-main").classList.add("col-9");
+
+
+            document.getElementById("right-side-bar").style.display = "block";
+            document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'L3-2', function () {
             map.getCanvas().style.cursor = 'pointer';
-            });
-             
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'L3-2', function () {
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'L3-2', function () {
             map.getCanvas().style.cursor = '';
-        });    
+        });
+        document.getElementById("close").onclick = function () {
+            document.getElementById("right-side-bar").style.display = 'none';
+            document.getElementById("right-side-bar").classList.remove("col-3");
+            document.getElementById("right-side-bar").classList.add("col-1");
+            document.getElementById("map-main").classList.remove("col-9");
+            document.getElementById("map-main").classList.add("col-11");
+        }
     }
 
-    render(){
+    render() {
         return (
-            <div className="Map">
-                <nav id="menu">
-                    <button className="" id="L3">L3</button>
-                    <button className="" id="L2">L2</button>
-                    <button className="active" id="L1">L1</button>
-                </nav>
-                <div id="map" />
+            <div className="row">
+                <div className="Map col-11" id="map-main">
+                    <nav id="menu">
+                        <button className="" id="L3">L3</button>
+                        <button className="" id="L2">L2</button>
+                        <button className="active" id="L1">L1</button>
+                    </nav>
+                    <div id="map" />
+                </div>
+                <div className="col-1" id="right-side-bar">
+                    <button id="close" className="btn btn-danger m-1">Close</button>
+                    <h1 id="info">h</h1>
+                    <h4>Event Description:</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+
+                </div>
             </div>
         )
     }
