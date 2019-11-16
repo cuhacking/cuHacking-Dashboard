@@ -581,7 +581,7 @@ class Map extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row col-10 mx-0 px-0">
                 <div className="Map col-11" id="map-main">
                     <nav id="menu">
                         <button className="" id="L3">L3</button>
