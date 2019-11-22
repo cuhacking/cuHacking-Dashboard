@@ -4,7 +4,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    res.send("Hello!");
+    res.render("index.ejs");
 })
 
 app.listen(process.env.PORT, (req, res) => {

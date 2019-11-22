@@ -9,16 +9,11 @@ Follow this instructions to run the project on your machine.
 ### Installing
 Install dependencies by navigation to the root folder and rnning 
 ```
-yarn install
+npm install
 ```
 
 ### Testing
 Run the development server with
 ```
-yarn start
+npm start
 ```
-
-## Build with
-
-* [Reactjs](https://reactjs.org/docs/getting-started.html)
-* [create-react-app](https://github.com/facebook/create-react-app)
