@@ -1,0 +1,84 @@
+<% include ./partials/header.ejs %>
+<script src="/static/app.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" id="navigation-box">
+            <div class="row justify-content-center">
+                <div class="col-sm-9 my-2">
+                    <img src="/static/logo-dark-mode.svg" alt="cuHacking-logo" class="figure-img img-fluid my-2" />
+                </div>
+            </div>
+            <ul class="nav flex-column" id="navigation-links">
+
+                <li class="nav-item">
+                    <a class="nav-link m-0 p-0" href="/updates">
+                        <div class="row">
+                            <div class="col-1 p-0"></div>
+                            <div class="col-11">
+                                <p class="mx-2 my-1">Updates</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active m-0 p-0" href="/schedule">
+                        <div class="row">
+                            <div class="col-1 p-0" id="navigation-link-left-box"></div>
+                            <div class="col-11">
+                                <p class="mx-2 my-1">Schedule</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="container m-4 px-3">
+                <h1 class="display-4 py-3" id="heading-font">Schedule</h1>
+                <p id="updates-cards-time">Saturday, December 7</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <h4 class="col-3 my-3 text-right">
+                                8:00 am
+                            </h4>
+                            <div class="col-9">
+                                <div class="card my-3" id="updates-cards">
+                                    <div class="card-body">
+                                        <h4 class="heading-card" id="heading-font">Lunck is served! (Blue)</h4>
+                                        <div id="updates-cards-time"><small>8:00am - 9:00am</small></div>
+
+
+                                        <div><small><i class="fas fa-map-marker-alt"></i> Atrium</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <h4 class="col-3 my-3 text-right">
+                                    9:00 am
+                                </h4>
+                                <div class="col-9">
+                                    <div class="card my-3" id="updates-cards">
+                                        <div class="card-body">
+                                            <h4 class="heading-card" id="heading-font">Opening Ceremonies</h4>
+                                            <div id="updates-cards-time"><small>9:00am - 9:30am</small></div>
+    
+    
+                                            <div><small><i class="fas fa-map-marker-alt"></i> RB 2000</small></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                       </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer.ejs %>

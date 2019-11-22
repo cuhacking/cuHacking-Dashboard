@@ -1,0 +1,45 @@
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#heading-font {
+    font-family: 'Reem Kufi', sans-serif;
+}
+
+.heading-card {
+    margin-bottom: 0;
+}
+
+
+
+#navigation-box {
+    background-color: #280749;
+    padding:0;
+    height: 100vh;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+#navigation-links .nav-item .nav-link{
+    color: white !important;
+}
+
+#navigation-links .nav-item .active{
+    color: #00D0FE !important;
+}
+
+#navigation-link-left-box {
+    background-color: #00D0FE;
+}
+
+#updates-cards {
+    background-color: rgba(151, 86, 216, 0.25);;
+}
+
+
+
+
+#updates-cards-time {
+    color: #9756D8;
+    
+}
