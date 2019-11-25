@@ -33,50 +33,39 @@
 
             </ul>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> </div>
         <div class="col-sm-9">
             <div class="container m-4 px-3">
                 <h1 class="display-4 py-3" id="heading-font">Updates</h1>
                 <div class="row">
                     <div class="col-sm-6">
 
-                        
+
                         <%
-                            for(var id in updates.updates ){
+                        var arr = updates.reverse();
+                        arr.forEach(update =>{
+
+                        
                             %>
                         <div class="card my-3" id="updates-cards">
                             <div class="card-body">
-                                <h4 class="heading-card" id="heading-font"><%=updates.updates[id].title%></h4>
-                                <div id="updates-cards-time"><small><%=(updates.updates[id].deliveryTime - (new Date().getTime()))/(1000*60*60*24)%>
-                                        minutes ago</small></div>
-                                <div class="my-2"><%=updates.updates[id].description%></div>
+                                <h4 class="heading-card" id="heading-font"><%=update.title%></h4>
+                                <div id="updates-cards-time">
+                                    <small><%=update.deliveryTime%></small></div>
+                                <div class="my-2"><%=update.description%></div>
 
-                                <div><small><i class="fas fa-map-marker-alt"></i> <%=updates.updates[id].locationId%></small></div>
+                                <div><small><i class="fas fa-map-marker-alt"></i>
+                                        <%=update.locationId%></small></div>
                             </div>
                         </div>
 
-                        <%}%>
+                        <%})%>
 
 
 
-                        <div class="card my-3" id="updates-cards">
-                            <div class="card-body">
-                                <h4 class="heading-card" id="heading-font">Fundamentals of web Design starts now!</h4>
-                                <div id="updates-cards-time"><small>42 minutes ago</small></div>
-                                <div class="my-2">Presented by Lighthouse Labs. Learn how to design and create a font
-                                    end application with Figma and React!</div>
 
-                                <div><small><i class="fas fa-map-marker-alt"></i> Atrium</small></div>
-                            </div>
-                        </div>
-                        <div class="card my-3" id="updates-cards">
-                            <div class="card-body">
-                                <h4 class="heading-card" id="heading-font">Welcome to cuHacking</h4>
-                                <div id="updates-cards-time"><small>1 hour ago</small></div>
-                                <div class="my-2">Be sure to head to the registration booth to get your swag!</div>
-
-                                <div><small><i class="fas fa-map-marker-alt"></i> Atrium</small></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

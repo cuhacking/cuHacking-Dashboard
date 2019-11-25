@@ -33,47 +33,45 @@
 
             </ul>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
         <div class="col-sm-9">
             <div class="container m-4 px-3">
                 <h1 class="display-4 py-3" id="heading-font">Schedule</h1>
                 <p id="updates-cards-time">Saturday, December 7</p>
                 <div class="row">
+
                     <div class="col-sm-6">
+                        <%
+                            var schedule = schedule.reverse(); 
+                            schedule.forEach(schedule=>{%>
                         <div class="row">
-                            <h4 class="col-3 my-3 text-right">
-                                8:00 am
+                            <h4 class="col-4 my-3 text-right">
+                                <%=schedule.startTime%>
                             </h4>
-                            <div class="col-9">
+                            <div class="col-8">
                                 <div class="card my-3" id="updates-cards">
                                     <div class="card-body">
-                                        <h4 class="heading-card" id="heading-font">Lunck is served! (Blue)</h4>
-                                        <div id="updates-cards-time"><small>8:00am - 9:00am</small></div>
+                                        <h4 class="heading-card" id="heading-font"><%=schedule.title%></h4>
+                                        <div id="updates-cards-time"><small><%=schedule.startTime%> -
+                                                <%=schedule.endTime%></small></div>
 
 
-                                        <div><small><i class="fas fa-map-marker-alt"></i> Atrium</small></div>
+                                        <div><small><i class="fas fa-map-marker-alt"></i>
+                                                <%=schedule.locationName%></small></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                                <h4 class="col-3 my-3 text-right">
-                                    9:00 am
-                                </h4>
-                                <div class="col-9">
-                                    <div class="card my-3" id="updates-cards">
-                                        <div class="card-body">
-                                            <h4 class="heading-card" id="heading-font">Opening Ceremonies</h4>
-                                            <div id="updates-cards-time"><small>9:00am - 9:30am</small></div>
-    
-    
-                                            <div><small><i class="fas fa-map-marker-alt"></i> RB 2000</small></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                       </div>
+                        <%})%>
+
+
+
+
+                    </div>
                 </div>
 
             </div>
