@@ -23,11 +23,11 @@
                 <li class="nav-item">
                     <a class="nav-link m-0 p-0" href="/schedule">
                         <div class="row">
-                                <div class="col-1 p-0"></div>
-                                <div class="col-11">
-                                    <p class="mx-2 my-1">Schedule</p>
-                                </div>
+                            <div class="col-1 p-0"></div>
+                            <div class="col-11">
+                                <p class="mx-2 my-1">Schedule</p>
                             </div>
+                        </div>
                     </a>
                 </li>
 
@@ -38,15 +38,26 @@
                 <h1 class="display-4 py-3" id="heading-font">Updates</h1>
                 <div class="row">
                     <div class="col-sm-6">
+
+                        
+                        <%
+                            for(var id in updates.updates ){
+                            %>
                         <div class="card my-3" id="updates-cards">
                             <div class="card-body">
-                                <h4 class="heading-card" id="heading-font">Lunck is served! (Blue)</h4>
-                                <div id="updates-cards-time"><small>2 minutes ago</small></div>
-                                <div class="my-2">If you're a blue, it's your turn for lunch.</div>
+                                <h4 class="heading-card" id="heading-font"><%=updates.updates[id].title%></h4>
+                                <div id="updates-cards-time"><small><%=(updates.updates[id].deliveryTime - (new Date().getTime()))/(1000*60*60*24)%>
+                                        minutes ago</small></div>
+                                <div class="my-2"><%=updates.updates[id].description%></div>
 
-                                <div><small><i class="fas fa-map-marker-alt"></i> Atrium</small></div>
+                                <div><small><i class="fas fa-map-marker-alt"></i> <%=updates.updates[id].locationId%></small></div>
                             </div>
                         </div>
+
+                        <%}%>
+
+
+
                         <div class="card my-3" id="updates-cards">
                             <div class="card-body">
                                 <h4 class="heading-card" id="heading-font">Fundamentals of web Design starts now!</h4>
@@ -73,5 +84,6 @@
         </div>
     </div>
 </div>
+
 
 <% include ./partials/footer.ejs %>
