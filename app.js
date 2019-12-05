@@ -37,8 +37,8 @@ app.get("/schedule", (req, res) => {
             var schedule = JSON.parse(body);
             var arr = [];
             for (var id in schedule.events) {
-                schedule.events[id].startTime = moment(schedule.events[id].startTime).format("hh:mm A");
-                schedule.events[id].endTime = moment(schedule.events[id].endTime).format("hh:mm A");
+                schedule.events[id].startTime = moment(schedule.events[id].startTime).utc().format("hh:mm A");
+                schedule.events[id].endTime = moment(schedule.events[id].endTime).utc().format("hh:mm A");
 
                 arr.push(schedule.events[id]);
             }
