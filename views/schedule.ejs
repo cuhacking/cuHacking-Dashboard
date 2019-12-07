@@ -42,20 +42,21 @@
                 <p id="updates-cards-time">Saturday, December 7</p>
                 <div class="row">
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         <%
                             var schedule = schedule.reverse(); 
                             schedule.forEach(schedule=>{%>
                         <div class="row">
-                            <h4 class="col-4 my-3 text-right">
+                            <h4 class="col-3 my-3 text-right">
                                 <%=schedule.startTime%>
                             </h4>
-                            <div class="col-8">
+                            <div class="col-9">
                                 <div class="card my-3" id="updates-cards">
                                     <div class="card-body">
                                         <h4 class="heading-card" id="heading-font"><%=schedule.title%></h4>
                                         <div id="updates-cards-time"><small><%=schedule.startTime%> -
                                                 <%=schedule.endTime%></small></div>
+                                                <div class="my-2"><%=schedule.description%></div>
 
 
                                         <div><small><i class="fas fa-map-marker-alt"></i>

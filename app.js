@@ -20,8 +20,10 @@ app.get("/updates", (req, res) => {
             var updates = JSON.parse(body);
             var arr = [];
             for (var id in updates.updates) {
+                if(updates.updates[id].deliveryTime < new Date().getTime()){
                 updates.updates[id].deliveryTime = moment(updates.updates[id].deliveryTime).fromNow();
                 arr.push(updates.updates[id]);
+                }
             }
             res.render("index.ejs", { updates: arr });
 
