@@ -6,7 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use('/static', express.static('public'));
 
-var baseUrl = "https://cuhacking.com/api-dev";
+var baseUrl = "https://cuhacking.com/api";
 
 app.get("/", (req, res) => {
     res.redirect("/updates");
