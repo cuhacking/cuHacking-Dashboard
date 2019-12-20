@@ -1,80 +1,48 @@
 <% include ./partials/header.ejs %>
-<script src="/static/app.js"></script>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2" id="navigation-box">
-            <div class="row justify-content-center">
-                <div class="col-sm-9 my-2">
-                    <img src="/static/logo-dark-mode.svg" alt="cuHacking-logo" class="figure-img img-fluid my-2" />
-                </div>
-            </div>
-            <ul class="nav flex-column" id="navigation-links">
+        <% include ./partials/navbar.ejs %>
 
-                <li class="nav-item">
-                    <a class="nav-link m-0 p-0" href="/updates">
-                        <div class="row">
-                            <div class="col-1 p-0"></div>
-                            <div class="col-11">
-                                <p class="mx-2 my-1">Updates</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active m-0 p-0" href="/schedule">
-                        <div class="row">
-                            <div class="col-1 p-0" id="navigation-link-left-box"></div>
-                            <div class="col-11">
-                                <p class="mx-2 my-1">Schedule</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('schedule-link').classList.add('active');
+            document.getElementById('active-box-schedule').classList.add('navigation-link-left-box');
+        </script>
 
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-9">
-            <div class="container m-4 px-3">
-                <h1 class="display-4 py-3" id="heading-font">Schedule</h1>
-                <p id="updates-cards-time">Saturday, December 7</p>
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
+            <div class="container">
+                <h1 class="display-4 py-3 heading-font">Schedule</h1>
+                <p class="updates-cards-time">Saturday, December 7</p>
                 <div class="row">
-
-                    <div class="col-sm-8">
-                        <%
-                            
-                            schedule.forEach(schedule=>{%>
+                    <div class="col-md-8">
+                        <% schedule.forEach(schedule=>{ %>
                         <div class="row">
                             <h4 class="col-3 my-3 text-right">
-                                <%=schedule.startTime%>
+                                <%= schedule.startTime %>
                             </h4>
                             <div class="col-9">
-                                <div class="card my-3" id="updates-cards">
+                                <div class="card my-3 updates-cards">
                                     <div class="card-body">
-                                        <h4 class="heading-card" id="heading-font"><%=schedule.title%></h4>
-                                        <div id="updates-cards-time"><small><%=schedule.startTime%> -
-                                                <%=schedule.endTime%></small></div>
-                                                <div class="my-2"><%=schedule.description%></div>
-
-
-                                        <div><small><i class="fas fa-map-marker-alt"></i>
-                                                <%=schedule.locationName%></small></div>
+                                        <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                        <div class="updates-cards-time">
+                                            <small>
+                                                <%= schedule.startTime %> - <%= schedule.endTime %>
+                                            </small>
+                                        </div>
+                                        <div class="my-2"><%= schedule.description %></div>
+                                        <div>
+                                            <small>
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <%= schedule.locationName %>
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <%})%>
-
-
-
-
+                        <% }) %>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

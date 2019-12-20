@@ -1,0 +1,64 @@
+<% include ./partials/header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+        <% include ./partials/navbar.ejs %>
+
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('info-link').classList.add('active');
+            document.getElementById('active-box-info').classList.add('navigation-link-left-box');
+        </script>
+
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
+            <div class="container">
+                <h1 class="display-4 py-3 heading-font">Info</h1>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h4 class="heading-card heading-font mb-3"> Internet Access</h4>
+                                <div class="card-text">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 15rem;">Network SSID:</td>
+                                            <td>cuHacking 2020</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password: </td>
+                                            <td>richcraft</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h4 class="heading-card heading-font mb-3"> Contacts</h4>
+                                <div class="card-text">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 15rem;">Emergency:</td>
+                                            <td>911</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Carleton University Police: </td>
+                                            <td>613-520-4444</td>
+                                        </tr>
+                                        <tr>
+                                            <td>cuHacking: </td>
+                                            <td>info@cuhacking.com</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer.ejs %>

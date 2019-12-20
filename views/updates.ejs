@@ -1,0 +1,39 @@
+<% include ./partials/header.ejs %>
+<div class="container-fluid">
+    <div class="row">
+        <% include ./partials/navbar.ejs %>
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('updates-link').classList.add('active');
+            document.getElementById('active-box-updates').classList.add('navigation-link-left-box');
+        </script>
+
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
+            <div class="container">
+                <h1 class="display-4 py-3 heading-font">Updates</h1>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <% 
+                        // Displays the announcements in reverse order.
+                        var arr = updates.reverse();
+                        arr.forEach(update =>{ %>
+                        <div class="card my-3 updates-cards">
+                            <div class="card-body">
+                                <h4 class="heading-card heading-font"><%= update.title %></h4>
+                                <div class="updates-cards-time">
+                                    <small>
+                                        <%= update.deliveryTime %>
+                                    </small>
+                                </div>
+                                <div class="my-2"><%= update.description %></div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ./partials/footer.ejs %>

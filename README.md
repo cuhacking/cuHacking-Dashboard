@@ -7,7 +7,7 @@ The dashboard for cuHacking 2020. Read more about it at the wiki page [here](htt
 Follow this instructions to run the project on your machine. 
 
 ### Installing
-Install dependencies by navigation to the root folder and rnning 
+Install dependencies by navigation to the root folder and running 
 ```
 npm install
 ```
