@@ -59,6 +59,10 @@ app.get('/info', (req, res) => {
     res.render('info.ejs');
 })
 
+app.get('/map', (req, res) => {
+    res.render('map.ejs');
+})
+
 app.get("/error", (req, res) => {
     res.render("error.ejs");
 })

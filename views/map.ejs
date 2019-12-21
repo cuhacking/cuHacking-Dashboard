@@ -1,0 +1,471 @@
+<% include ./partials/header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+        <% include ./partials/navbar.ejs %>
+
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('map-link').classList.add('active');
+            document.getElementById('active-box-map').classList.add('navigation-link-left-box');
+        </script>
+
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
+            <div class="container">
+                <h1 class="display-4 py-3 heading-font">Map</h1>
+                <div class="row">
+                    <div class="col-md-9">
+                        <!-- <div class="row"> -->
+                        <div class="Map" id="map-main">
+                            <nav id="menu">
+                                <button class="" id="L3">L3</button>
+                                <button class="" id="L2">L2</button>
+                                <button class="active" id="L1">L1</button>
+                            </nav>
+                            <div id="map"></div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+
+                    <div class="col-md-3 jumbotron" id="right-side-bar">
+                        <button id="close" class="btn btn-danger m-1">Close</button>
+                        <h1 id="info" class="heading-font">h</h1>
+                        <h4>Event Description:</h4>
+                        <p class="">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer.ejs %>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGVqYXNocGF0ZWwiLCJhIjoiY2p5YWJoaHhrMDF4bzNtbzg1dzBwbGZyZiJ9.3pAUNTmqoMsgpEWoOZfKlw';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/basic-v8',
+        center: [-75.6962, 45.38236],
+        zoom: 18.6,
+        bearing: -125
+    });
+
+    map.on('load', function () {
+        map.addSource('river-building', {
+            type: 'geojson',
+            data: '/static/RB.geojson'
+        });
+
+        map.addLayer({
+            "id": "L1-1",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 1],
+                ["==", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'visible'
+            },
+            "paint": {
+                'fill-color': "#888888"
+            }
+        });
+
+        map.addLayer({
+            "id": "L1-2",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 1],
+                ["!=", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'visible'
+            },
+            "paint": {
+                'fill-color': [
+                    "match",
+                    ["get", "type"],
+                    "room",
+                    "#9756D8",
+                    "washroom",
+                    "#f6d500",
+                    "elevator",
+                    "#dd001e",
+                    "stairs",
+                    "#006ca9",
+                    "hallway",
+                    "#FEFEFE",
+                    "#AAAAAA"
+                ]
+            }
+        });
+
+        map.addLayer({
+            "id": "L1-3",
+            "type": "line",
+            "source": "river-building",
+            "filter": ["==", "floor", 1],
+            'layout': {
+                'visibility': 'visible'
+            },
+            "paint": {
+                "line-color": "#212121",
+                "line-width": 0.5
+            }
+        });
+
+        map.addLayer({
+            "id": "L1-4",
+            "type": "symbol",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 1],
+                ["==", ["get", "label"], true]
+            ],
+            "layout": {
+                "text-field": ["get", "name"],
+                //     "text-variable-anchor": ["center"],
+                //     "text-radial-offset": 0.5,
+                //     "text-justify": "auto",
+                'visibility': 'visible'
+                // },
+                // "paint": {
+                //     "text-color": "#ffffff"
+            }
+        });
+        map.addLayer({
+            "id": "L2-1",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 2],
+                ["==", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                'fill-color': "#888888"
+            }
+        });
+
+        map.addLayer({
+            "id": "L2-2",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 2],
+                ["!=", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                'fill-color': [
+                    "match",
+                    ["get", "type"],
+                    "room",
+                    "#9756D8",
+                    "washroom",
+                    "#f6d500",
+                    "elevator",
+                    "#dd001e",
+                    "stairs",
+                    "#006ca9",
+                    "hallway",
+                    "#FEFEFE",
+                    "#AAAAAA"
+                ]
+            }
+        });
+
+        map.addLayer({
+            "id": "L2-3",
+            "type": "line",
+            "source": "river-building",
+            "filter": ["==", "floor", 2],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                "line-color": "#212121",
+                "line-width": 0.5
+            }
+        });
+
+        map.addLayer({
+            "id": "L2-4",
+            "type": "symbol",
+            "source": "river-building",
+            "filter": ["all", ["==", ["get", "floor"], 2], ["==", ["get", "label"], true]],
+            "layout": {
+                "text-field": ["get", "name"],
+                //     "text-variable-anchor": ["center"],
+                //     "text-radial-offset": 0.5,
+                //     "text-justify": "auto",
+                'visibility': 'none'
+                // },
+                // "paint": {
+                //     "text-color": "#ffffff"
+            }
+        });
+        map.addLayer({
+            "id": "L3-1",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 3],
+                ["==", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                'fill-color': "#888888"
+            }
+        });
+
+        map.addLayer({
+            "id": "L3-2",
+            "type": "fill",
+            "source": "river-building",
+            "filter": ["all",
+                ["==", ["get", "floor"], 3],
+                ["!=", ["get", "type"], "backdrop"]
+            ],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                'fill-color': [
+                    "match",
+                    ["get", "type"],
+                    "room",
+                    "#9756D8",
+                    "washroom",
+                    "#f6d500",
+                    "elevator",
+                    "#dd001e",
+                    "stairs",
+                    "#006ca9",
+                    "hallway",
+                    "#FEFEFE",
+                    "#AAAAAA"
+                ]
+            }
+        });
+
+        map.addLayer({
+            "id": "L3-3",
+            "type": "line",
+            "source": "river-building",
+            "filter": ["==", "floor", 3],
+            'layout': {
+                'visibility': 'none'
+            },
+            "paint": {
+                "line-color": "#212121",
+                "line-width": 0.5
+            }
+        });
+
+        map.addLayer({
+            "id": "L3-4",
+            "type": "symbol",
+            "source": "river-building",
+            "filter": ["all", ["==", ["get", "floor"], 3], ["==", ["get", "label"], true]],
+            "layout": {
+                "text-field": ["get", "name"],
+                //     "text-variable-anchor": ["center"],
+                //     "text-radial-offset": 0.5,
+                //     "text-justify": "auto",
+                'visibility': 'none'
+                // },
+                // "paint": {
+                //     "text-color": "#ffffff"
+            }
+        });
+
+
+        //     map.addLayer({
+        //         "id": "L1-3",
+        //         "type": "symbol",
+        //         "source": "river-building",
+        //         "layout": {
+        //             "text-field": ["get", "room"],
+        //             "text-variable-anchor": ["center"],
+        //             "text-radial-offset": 0.5,
+        //             "text-justify": "auto",
+        //             'visibility': 'visible'
+        //         },
+        //         "paint": {
+        //             "text-color": "#ffffff"
+        //         },
+        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
+        //     });
+        //     map.addLayer({
+        //         "id": "L1-4",
+        //         "type": "symbol",
+        //         "source": "river-building",
+        //         "layout": {
+        //             "icon-image": "toilet-15",
+        //             "text-field": "washroom",
+        //             "text-variable-anchor": ["top"],
+        //             "text-radial-offset": 0.5,
+        //             "text-justify": "auto",
+        //             'visibility': 'visible'
+        //         },
+        //         "paint": {
+        //             "text-color": "#ffffff"
+        //         },
+        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
+        //     });
+        //     map.addLayer({
+        //         "id": "L1-5",
+        //         "type": "symbol",
+        //         "source": "river-building",
+        //         "layout": {
+        //             "icon-image": "prison-11",
+        //             "text-field": "elevator",
+        //             "text-variable-anchor": ["top"],
+        //             "text-radial-offset": 0.5,
+        //             "text-justify": "auto",
+        //             'visibility': 'visible'
+        //         },
+        //         "paint": {
+        //             "text-color": "#ffffff"
+        //         },
+        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
+        //     });
+        //     map.addLayer({
+        //         "id": "L1-6",
+        //         "type": "symbol",
+        //         "source": "river-building",
+        //         "layout": {
+        //             "icon-image": "dot-9",
+        //             "text-field": "Stairs",
+        //             "text-variable-anchor": ["top"],
+        //             "text-radial-offset": 0.5,
+        //             "text-justify": "auto",
+        //             'visibility': 'visible'
+        //         },
+        //         "paint": {
+        //             "text-color": "#ffffff"
+        //         },
+        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
+        //     });
+        //  
+    });
+
+    document.getElementById("L1").onclick = function L1() {
+        for (var i = 1; i < 5; i++) {
+            map.setLayoutProperty("L2-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L3-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L1-" + i, 'visibility', 'visible');
+        }
+        for (var k = 1; k < 4; k++) {
+            document.getElementById("L" + k).className = "";
+        }
+        document.getElementById("L1").className = "active";
+    };
+
+    document.getElementById("L2").onclick = function L2() {
+        for (var i = 1; i < 5; i++) {
+            map.setLayoutProperty("L1-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L3-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L2-" + i, 'visibility', 'visible');
+        }
+        for (var k = 1; k < 4; k++) {
+            document.getElementById("L" + k).className = "";
+        }
+        document.getElementById("L2").className = "active";
+    };
+
+    document.getElementById("L3").onclick = function L3() {
+        for (var i = 1; i < 5; i++) {
+            map.setLayoutProperty("L1-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L2-" + i, 'visibility', 'none');
+            map.setLayoutProperty("L3-" + i, 'visibility', 'visible');
+        }
+        for (var k = 1; k < 4; k++) {
+            document.getElementById("L" + k).className = "";
+        }
+        document.getElementById("L3").className = "active";
+    };
+
+    map.on('click', 'L1-2', function (e) {
+        // document.getElementById("right-side-bar").classList.remove("col-1");
+        // document.getElementById("right-side-bar").classList.add("col-3");
+        // document.getElementById("map-main").classList.remove("col-11");
+        // document.getElementById("map-main").classList.add("col-9");
+        document.getElementById("right-side-bar").style.display = "block";
+        document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+    });
+
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'L1-2', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'L1-2', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+    map.on('click', 'L2-2', function (e) {
+        // document.getElementById("right-side-bar").classList.remove("col-1");
+        // document.getElementById("right-side-bar").classList.add("col-3");
+        // document.getElementById("map-main").classList.remove("col-11");
+        // document.getElementById("map-main").classList.add("col-9");
+        document.getElementById("right-side-bar").style.display = "block";
+        document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+    });
+
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'L2-2', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'L2-2', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+    map.on('click', 'L3-2', function (e) {
+        // document.getElementById("right-side-bar").classList.remove("col-1");
+        // document.getElementById("right-side-bar").classList.add("col-3");
+        // document.getElementById("map-main").classList.remove("col-11");
+        // document.getElementById("map-main").classList.add("col-9");
+        document.getElementById("right-side-bar").style.display = "block";
+        document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
+
+    });
+
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'L3-2', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'L3-2', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+    document.getElementById("close").onclick = function () {
+        document.getElementById("right-side-bar").style.display = 'none';
+        // document.getElementById("right-side-bar").classList.remove("col-3");
+        // document.getElementById("right-side-bar").classList.add("col-1");
+        // document.getElementById("map-main").classList.remove("col-9");
+        // document.getElementById("map-main").classList.add("col-11");
+    }
+
+</script>

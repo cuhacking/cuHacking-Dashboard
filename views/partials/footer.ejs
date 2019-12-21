@@ -1,3 +1,44 @@
 </body>
 
 </html>
+<script>
+    let g = "color:#9756D8;font-weight:bold;";
+    let b = "color:#9756D8;font-weight:bold;";
+    let base22MainStyle = "font-size:34px; font-weight:200; letter-spacing:0.02em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,0,0.9);";
+    let base22MessageStyle = "font-size:21px; font-weight:200; letter-spacing:0.2em; line-height:1.4em; font-family:helvetica,arial; color:rgba(0,0,25,0.5);";
+    let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    let textChrome = `
+%cXXXXXXXX   %c XX      XX                            
+%cXX         %c XX      XX                         
+%cXX         %c XX      XX                    
+%cXX         %c XX      XX  
+%cXX         %c XX      XX    
+%cXX         %c XX      XX    
+%cXX         %c XX      XX  
+%cXXXXXXXX   %c XXXXXXXXXX %c
+               
+`;
+
+    let textOthers = `
+%cXX                                %cXXXXXX XXXXXXX    
+%cXX                                    %cXX      XX
+%cXX                                    %cXX      XX
+%cXXXXXXXX XXXXXXXX XXXXXXX XXXXXXX %cXXXXXX XXXXXXX
+%cXX    XX XX    XX XX      XX   XX %cXX     XX
+%cXX    XX XX    XX XXXXXXX XXXXXXX %cXX     XX
+%cXX    XX XX    XX      XX XX      %cXX     XX
+%cXXXXXXXX XXXXXXXX XXXXXXX XXXXXXX %cXXXXXX XXXXXXX
+               %cXX
+`;
+
+    // There is no better web brower for developers, right?
+    if (isChrome) {
+        console.log(textChrome, g, b, g, b, g, b, g, b, g, b, g, b, g, b, g, b, g);
+    } else {
+        console.log(textOthers, g, b, g, b, g, b, g, b, g, b, g, b, g, b, g, b, g);
+    }
+
+    console.log("%ccuHacking 2020", base22MainStyle),
+        console.log("%cRiver Building @Carleton University", base22MessageStyle),
+        console.log("%c", "font-size:34px; line-height:1.4em;");
+</script>
