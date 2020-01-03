@@ -1,0 +1,78 @@
+<% include ./partials/header.ejs %>
+
+<div class="container countdown">
+    <div class="row justify-content-center align-items-center top">
+        <h1 class="heading-font top-heading">Hacking begins in</h1>
+    </div>
+
+    <div class="row justify-content-center align-items-center heading-font middle" id="timer">
+        <div class="col-md-2 middle-div text-center">
+            <span id="days"></span>
+            <div class="white d-md-flex d-inline justify-content-center">day</div>
+        </div>
+        <div class="col-md-2 middle-div text-center">
+            <span id="hours"></span>
+            <div class="white d-md-flex d-inline justify-content-center">hour</div>
+        </div>
+        <div class="col-md-2 middle-div text-center">
+            <span id="minutes"></span>
+            <div class="white d-md-flex d-inline justify-content-center">minute</div>
+        </div>
+        <div class="col-md-2 middle-div text-center">
+            <span id="seconds"></span>
+            <div class="white d-md-flex d-inline justify-content-center">second</div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center bottom">
+        <div class="col-lg-9 app-promo-box">
+            <div class="container">
+                <div class="row align-items-center bottom-1 justify-content-center">
+                    <h1 class="heading-font">Don't forget to download the cuHacking App!</h1>
+                </div>
+                <div class="row bottom-2 justify-content-center">
+                    <a href="https://apps.apple.com/us/app/cuhacking/id1490263765?mt=8" target="_blank"><img src="/static/svg/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                            alt="app store downliad link" srcset=""></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.cuhacking.app&hl=en" target="_blank"><img
+                            src="/static/svg/Google_Play_Store_badge_EN.svg" alt="google play download link"
+                            srcset=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 11, 2020 12:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        // If the count down is finished, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+<% include ./partials/footer.ejs %>

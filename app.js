@@ -9,7 +9,13 @@ app.use('/static', express.static('public'));
 var baseUrl = "https://cuhacking.com/api";
 
 app.get("/", (req, res) => {
-    res.redirect("/updates");
+    res.render('countdown.ejs');
+
+    // res.redirect("/updates");
+})
+
+app.get('/:a', (req, res) => {
+    res.redirect('/');
 })
 
 app.get("/updates", (req, res) => {
