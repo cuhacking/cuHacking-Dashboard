@@ -34,12 +34,19 @@ app.get("/updates", (req, res) => {
             for (var id in updates.updates) {
                 // Don't show future announcements
                 if (new Date(updates.updates[id].deliveryTime).getTime() < new Date().getTime()) {
-                    // Make a nice string (e.g. '2 hours ago') of the delivery time
-                    updates.updates[id].deliveryTime = moment(updates.updates[id].deliveryTime).fromNow();
                     arr.push(updates.updates[id]);
                 }
             }
-            res.render("updates.ejs", { updates: arr });
+            const sortedArray = arr.sort((a, b) => {
+                if (moment(a.deliveryTime).valueOf() < moment(b.deliveryTime).valueOf()) return -1;
+                if (moment(a.deliveryTime).valueOf() > moment(b.deliveryTime).valueOf()) return 1;
+                return 0;
+            });
+            sortedArray.forEach(x => {
+                // Make a nice string (e.g. '2 hours ago') of the delivery time
+                x.deliveryTime = moment(x.deliveryTime).fromNow();
+            })
+            res.render("updates.ejs", { updates: sortedArray });
         }
     });
 })
@@ -53,13 +60,37 @@ app.get("/schedule", (req, res) => {
             // Make an array of all schedule
             var arr = [];
             for (var id in schedule.schedule) {
-                // Format start and end time of the event
-                schedule.schedule[id].startTime = moment(schedule.schedule[id].startTime).format("hh:mm A");
-                schedule.schedule[id].endTime = moment(schedule.schedule[id].endTime).format("hh:mm A");
-
                 arr.push(schedule.schedule[id]);
             }
-            res.render("schedule.ejs", { schedule: arr });
+            const sortedArray = arr.sort((a, b) => {
+                if (moment(a.startTime).valueOf() < moment(b.startTime).valueOf()) return -1;
+                if (moment(a.startTime).valueOf() > moment(b.startTime).valueOf()) return 1;
+                return 0;
+            })
+            var arr = [];
+            var arr11 = [];
+            var arr12 = [];
+            sortedArray.forEach(x => {
+                if (moment(x.startTime).format('YYYYMMDD') == '20200111') {
+                    // Format start and end time of the event
+                    x.startTime = moment(x.startTime).format("hh:mm A");
+                    x.endTime = moment(x.endTime).format("hh:mm A");
+                    arr11.push(x);
+                }
+                else if (moment(x.startTime).format('YYYYMMDD') == '20200112') {
+                    // Format start and end time of the event
+
+                    x.startTime = moment(x.startTime).format("hh:mm A");
+                    x.endTime = moment(x.endTime).format("hh:mm A");
+                    arr12.push(x);
+                }
+                else{
+                x.startTime = moment(x.startTime).format("hh:mm A");
+                    x.endTime = moment(x.endTime).format("hh:mm A");
+                    arr.push(x);
+                }
+            })
+            res.render("schedule.ejs", { arr: arr, arr11: arr11, arr12: arr12 });
         }
     });
 })
@@ -70,7 +101,7 @@ app.get('/info', (req, res) => {
             console.log(error);
         } else {
             var info = JSON.parse(body);
-            
+
             res.render("info.ejs", { info: info.info });
         }
     });
