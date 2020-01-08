@@ -53,11 +53,11 @@ html, body {
         box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.25);
         z-index: 1999;
     }
-    #links34{
-        margin-left:0 !important;
+    #links34 {
+        margin-left: 0 !important;
         margin-right: 0 !important;
         padding-left: 0 !important;
-        padding-right: 0 !important; 
+        padding-right: 0 !important;
     }
     #navigation-box div div {
         text-align: center;
@@ -65,6 +65,9 @@ html, body {
     }
     #main-content {
         margin-top: -44px;
+    }
+    .event-type{
+        font-size: smaller;
     }
 }
 
@@ -276,4 +279,58 @@ html, body {
     color: var(--primaryColour);
     font-weight: bold;
     font-size: large;
+}
+
+.Food.card {
+    border: 2px solid red;
+    border-left: 15px solid red;
+}
+
+.Food.event-type {
+    color: red;
+    font-weight: bold;
+
+
+}
+
+.Key.card {
+    border: 2px solid var(--darkPrimaryColour);
+    border-left: 15px solid var(--darkPrimaryColour);
+}
+.Key.event-type{
+    color: var(--darkPrimaryColour);
+    font-weight: bold;
+
+
+}
+
+.Sponsor.card {
+    border: 2px solid yellow;
+    border-left: 15px solid yellow;
+}
+.Sponsor.event-type{
+color: yellow;
+font-weight: bold;
+
+}
+
+.Social.card {
+    border: 2px solid blue;
+    border-left: 15px solid blue;
+}
+.Social.event-type{
+    color:blue;
+    font-weight: bold;
+
+
+}
+
+.Workshop.card {
+    border: 2px solid green;
+    border-left: 15px solid green;
+}
+.Workshop.event-type{
+color:green;
+font-weight: bold;
+
 }

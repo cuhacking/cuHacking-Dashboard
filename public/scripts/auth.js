@@ -6,7 +6,11 @@ auth.onAuthStateChanged(user => {
             // Send token to your backend via HTTPS
             // ...
             const Http = new XMLHttpRequest();
-            const url = 'https://cuhacking.com/api-dev/users/profile';
+            console.log(url);
+
+            url = url + 'users/profile';
+            console.log(url);
+
             Http.open("GET", url);
             console.log(x);
             Http.setRequestHeader('Authorization', 'Bearer ' + x);

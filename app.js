@@ -60,7 +60,9 @@ app.get("/schedule", (req, res) => {
             // Make an array of all schedule
             var arr = [];
             for (var id in schedule.schedule) {
-                arr.push(schedule.schedule[id]);
+                if(schedule.schedule[id].type != "Volunteer"){
+                    arr.push(schedule.schedule[id]);
+                }
             }
             const sortedArray = arr.sort((a, b) => {
                 if (moment(a.startTime).valueOf() < moment(b.startTime).valueOf()) return -1;

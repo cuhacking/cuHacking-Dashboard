@@ -14,34 +14,36 @@
                 <h1 class="display-4 py-3 heading-font">Schedule</h1>
 
                 <%if(arr.length > 0){ %>
-                <p class="updates-cards-time">Date other than saturday,11 and sunday, 12</p>
+                <p class="updates-cards-time">Date other than saturday, 11 and sunday, 12</p>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <% arr.forEach(schedule=>{ %>
-                        <div class="row">
-                            <h4 class="col-3 my-3 text-right">
-                                <%= schedule.startTime %>
-                            </h4>
-                            <div class="col-9">
-                                <div class="card my-3 updates-cards">
-                                    <div class="card-body">
-                                        <h4 class="heading-card heading-font"><%= schedule.title %></h4>
-                                        <div class="updates-cards-time">
-                                            <small>
-                                                <%= schedule.startTime %> - <%= schedule.endTime %>
-                                            </small>
-                                        </div>
-                                        <div class="my-2"><%= schedule.description %></div>
-                                        <div>
-                                            <small>
-                                                <i class="fas fa-map-marker-alt"></i>
-                                                <%= schedule.location %>
-                                            </small>
+                            <div class="row">
+                                <div class="col-3 my-3 text-right d-flex flex-column">
+                                    <h4>
+                                        <%= schedule.startTime %>
+                                    </h4>
+                                    <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                                </div>
+                                <div class="col-9">
+                                    <div class="card my-1 updates-cards <%=schedule.type%>">
+                                        <div class="card-body">
+                                            <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                            <div class="updates-cards-time">
+                                                <small>
+                                                    <%= schedule.startTime %> - <%= schedule.endTime %>
+                                                </small>
+                                            </div>
+                                            <div>
+                                                <small>
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    <%= schedule.location %>
+                                                </small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <% }) %>
 
                     </div>
@@ -50,7 +52,7 @@
 
                 <p class="updates-cards-time">Saturday, December 11</p>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
 
                         <!-- <div class="row">
                             <h4 class="col-3 my-3 text-right">
@@ -109,16 +111,16 @@
                             </div>
                         </div> -->
 
-
-
-
                         <% arr11.forEach(schedule=>{ %>
                 <div class="row">
-                    <h4 class="col-3 my-3 text-right">
-                        <%= schedule.startTime %>
-                    </h4>
+                    <div class="col-3 my-3 text-right d-flex flex-column">
+                        <h4>
+                            <%= schedule.startTime %>
+                        </h4>
+                        <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                    </div>
                     <div class="col-9">
-                        <div class="card my-3 updates-cards">
+                        <div class="card my-1 updates-cards <%=schedule.type%>">
                             <div class="card-body">
                                 <h4 class="heading-card heading-font"><%= schedule.title %></h4>
                                 <div class="updates-cards-time">
@@ -126,7 +128,6 @@
                                         <%= schedule.startTime %> - <%= schedule.endTime %>
                                     </small>
                                 </div>
-                                <div class="my-2"><%= schedule.description %></div>
                                 <div>
                                     <small>
                                         <i class="fas fa-map-marker-alt"></i>
@@ -143,32 +144,34 @@
 
         <p class="updates-cards-time">Sunday, December 12</p>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <% arr12.forEach(schedule=>{ %>
-                <div class="row">
-                    <h4 class="col-3 my-3 text-right">
-                        <%= schedule.startTime %>
-                    </h4>
-                    <div class="col-9">
-                        <div class="card my-3 updates-cards">
-                            <div class="card-body">
-                                <h4 class="heading-card heading-font"><%= schedule.title %></h4>
-                                <div class="updates-cards-time">
-                                    <small>
-                                        <%= schedule.startTime %> - <%= schedule.endTime %>
-                                    </small>
-                                </div>
-                                <div class="my-2"><%= schedule.description %></div>
-                                <div>
-                                    <small>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <%= schedule.location %>
-                                    </small>
+                    <div class="row">
+                        <div class="col-3 my-3 text-right d-flex flex-column">
+                            <h4>
+                                <%= schedule.startTime %>
+                            </h4>
+                            <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                        </div>
+                        <div class="col-9">
+                            <div class="card my-1 updates-cards <%=schedule.type%>">
+                                <div class="card-body">
+                                    <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                    <div class="updates-cards-time">
+                                        <small>
+                                            <%= schedule.startTime %> - <%= schedule.endTime %>
+                                        </small>
+                                    </div>
+                                    <div>
+                                        <small>
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <%= schedule.location %>
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <% }) %>
 
             </div>
