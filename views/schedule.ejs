@@ -14,36 +14,36 @@
                 <h1 class="display-4 py-3 heading-font">Schedule</h1>
 
                 <%if(arr.length > 0){ %>
-                <p class="updates-cards-time">Date other than saturday, 11 and sunday, 12</p>
+                <p class="updates-cards-time">Dates other than 11 January, 12 January</p>
                 <div class="row">
                     <div class="col-md-7">
                         <% arr.forEach(schedule=>{ %>
-                            <div class="row">
-                                <div class="col-3 my-3 text-right d-flex flex-column">
-                                    <h4>
-                                        <%= schedule.startTime %>
-                                    </h4>
-                                    <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
-                                </div>
-                                <div class="col-9">
-                                    <div class="card my-1 updates-cards <%=schedule.type%>">
-                                        <div class="card-body">
-                                            <h4 class="heading-card heading-font"><%= schedule.title %></h4>
-                                            <div class="updates-cards-time">
-                                                <small>
-                                                    <%= schedule.startTime %> - <%= schedule.endTime %>
-                                                </small>
-                                            </div>
-                                            <div>
-                                                <small>
-                                                    <i class="fas fa-map-marker-alt"></i>
-                                                    <%= schedule.location %>
-                                                </small>
-                                            </div>
+                        <div class="row">
+                            <div class="col-3 my-3 text-right d-flex flex-column">
+                                <h4>
+                                    <%= schedule.startTime %>
+                                </h4>
+                                <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="card my-1 updates-cards <%=schedule.type%>">
+                                    <div class="card-body">
+                                        <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                        <div class="updates-cards-time">
+                                            <small>
+                                                <%= schedule.startTime %> - <%= schedule.endTime %>
+                                            </small>
+                                        </div>
+                                        <div>
+                                            <small>
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <%= schedule.location %>
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         <% }) %>
 
                     </div>
@@ -54,64 +54,76 @@
                 <div class="row">
                     <div class="col-md-7">
 
-                        <!-- <div class="row">
-                            <h4 class="col-3 my-3 text-right">
-                                08:00 AM
-                            </h4>
-                            <div class="col-9">
-                                <div class="card my-3 updates-cards">
-                                    <div class="card-body">
-                                        <h4 class="heading-card heading-font">Kotlin Workshop</h4>
-                                        <a data-toggle="modal" href="#exampleModalCenter">See more info</a>
-                                        
-                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <img src="/static/svg/Group.svg" height="40px" width="100px" alt="" srcset="">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Kotlin Workshop
-                                                        </h5>
-                                                        Time:  08:00 AM - 08:30 AM<br>
-                                                        Description: Learn a very nice language Kotlin in this workshop intended
-                                                        for begineers and intermediate skill level.<br>
-                                                        Location: <i class="fas fa-map-marker-alt"></i>
-                                                        RB 2308
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Add to Favourites</button>
-                                                    </div>
+                    <% arr11.forEach(schedule=>{ %>
+                <div class="row">
+                    <div class="col-3 my-3 text-right d-flex flex-column">
+                        <h4>
+                            <%= schedule.startTime %>
+                        </h4>
+                        <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                    </div>
+                    <div class="col-9">
+                        <div class="card my-1 updates-cards <%=schedule.type%>">
+                            <a data-toggle="modal" href="#<%=schedule.id%>" class="schedule-moreinfo">
+
+                                <div class="card-body">
+                                    <div class="modal fade" id="<%=schedule.id%>" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle"
+                                                        style="font-weight: bold;"><%=schedule.title%>
+                                                    </h5>
+                                                    <div style="color: #5827b8;">
+                                                        Saturday <%= schedule.startTime %> - <%= schedule.endTime %> | <%=schedule.type%> </div>
+
+                                                    <%=schedule.description%><br>
+                                                    Location: <i class="fas fa-map-marker-alt"></i>
+                                                    <%= schedule.location %>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Add to
+                                                        Favourites</button>
                                                 </div>
                                             </div>
                                         </div>
-                                       
-                                        <div class="updates-cards-time">
-                                            <small>
-                                                08:00 AM - 08:30 AM
-                                            </small>
-                                        </div>
-                                        <div class="my-2">Learn a very nice language Kotlin in this workshop intended
-                                            for begineers and intermediate skill level.</div>
+                                    </div>
+
+                                    <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                    <div class="updates-cards-time">
                                         <div>
-                                            <small>
-                                                <i class="fas fa-map-marker-alt"></i>
-                                                RB 2308
-                                            </small>
+                                            <%= schedule.startTime %> - <%= schedule.endTime %>
                                         </div>
                                     </div>
+                                    <div>
+                                        <small>
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <%= schedule.location %>
+                                        </small>
+                                    </div>
                                 </div>
-                            </div>
-                        </div> -->
+                            </a>
 
-                        <% arr11.forEach(schedule=>{ %>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <p class="updates-cards-time">Sunday, December 12</p>
+        <div class="row">
+            <div class="col-md-7">
+                <% arr12.forEach(schedule=>{ %>
                 <div class="row">
                     <div class="col-3 my-3 text-right d-flex flex-column">
                         <h4>
@@ -138,40 +150,6 @@
                         </div>
                     </div>
                 </div>
-                <% }) %>
-            </div>
-        </div>
-
-        <p class="updates-cards-time">Sunday, December 12</p>
-        <div class="row">
-            <div class="col-md-7">
-                <% arr12.forEach(schedule=>{ %>
-                    <div class="row">
-                        <div class="col-3 my-3 text-right d-flex flex-column">
-                            <h4>
-                                <%= schedule.startTime %>
-                            </h4>
-                            <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
-                        </div>
-                        <div class="col-9">
-                            <div class="card my-1 updates-cards <%=schedule.type%>">
-                                <div class="card-body">
-                                    <h4 class="heading-card heading-font"><%= schedule.title %></h4>
-                                    <div class="updates-cards-time">
-                                        <small>
-                                            <%= schedule.startTime %> - <%= schedule.endTime %>
-                                        </small>
-                                    </div>
-                                    <div>
-                                        <small>
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <%= schedule.location %>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 <% }) %>
 
             </div>

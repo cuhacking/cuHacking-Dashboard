@@ -14,7 +14,10 @@
 
                 <div class="row">
                     <div class="col-md-7">
-                        <% 
+                        <% if(updates.length == 0){ %>
+                            <p class="updates-cards-time">No updates to show</p>
+
+                        <%}else{
                         // Displays the announcements in reverse order.
                         var arr = updates.reverse();
                         arr.forEach(update =>{ %>
@@ -29,7 +32,7 @@
                                 <div class="my-2"><%= update.description %></div>
                             </div>
                         </div>
-                        <% }) %>
+                        <% })} %>
                     </div>
                 </div>
             </div>

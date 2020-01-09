@@ -305,11 +305,11 @@ html, body {
 }
 
 .Sponsor.card {
-    border: 2px solid yellow;
-    border-left: 15px solid yellow;
+    border: 2px solid var(--yellow);
+    border-left: 15px solid var(--yellow);
 }
 .Sponsor.event-type{
-color: yellow;
+color: var(--yellow);
 font-weight: bold;
 
 }
@@ -333,4 +333,16 @@ font-weight: bold;
 color:green;
 font-weight: bold;
 
+}
+
+.schedule-moreinfo {
+    text-decoration: none; 
+    color: black;
+
+}
+
+.schedule-moreinfo:hover{
+    background-color: rgba(151, 86, 216, 0.25);
+    text-decoration: none; 
+    color: black;
 }

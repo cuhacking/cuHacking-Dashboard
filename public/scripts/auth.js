@@ -8,10 +8,9 @@ auth.onAuthStateChanged(user => {
             const Http = new XMLHttpRequest();
             console.log(url);
 
-            url = url + 'users/profile';
             console.log(url);
 
-            Http.open("GET", url);
+            Http.open("GET", url + 'users/profile');
             console.log(x);
             Http.setRequestHeader('Authorization', 'Bearer ' + x);
             Http.send();

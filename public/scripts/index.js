@@ -2,10 +2,12 @@
 const guideList = document.querySelector('#content');
 
 // setup guides
-const setupGuides = (data) => {
+const setupGuides = (data1) => {
     document.getElementById('login-box').style.display = 'none';
     document.getElementById('logout').style.display = 'block';
-    var data = JSON.parse(data);
+    var data = JSON.parse(data1);
+    console.log(data);
+    
     var dietaryRestrictions = "";
     var diet = data.data.application.personalInfo.dietaryRestrictions;
     if (diet.lactoseFree == true) {
