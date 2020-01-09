@@ -171,6 +171,18 @@ app.get("/map/RB", (req, res) =>{
     });
 })
 
+app.get("/map/HS", (req, res) =>{
+    request(baseUrl + "/map", function (error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            var info = JSON.parse(body).map.map.HS.geometry;
+
+            res.send(info);
+        }
+    });
+})
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, (req, res) => {

@@ -32,7 +32,7 @@
                         <h1 id="info" class="heading-font">h</h1>
                         <h4>Event Description:</h4>
                         <p class="">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            Lorem ipsum dolor sit amet, consriver-buildingtetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                         </p>
                     </div>
@@ -55,387 +55,461 @@
         zoom: 18.6,
         bearing: -125
     });
-    map.on('load', function () {
-        map.addSource('river-building', {
-            type: 'geojson',
-            data: "/map/RB"
-        });
 
-        map.addLayer({
-            "id": "rb-backdrop",
-            "type": "fill",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "type"], "backdrop"]
-            ],
-            'layout': {
-                'visibility': 'visible'
-            },
-            "paint": {
-                'fill-color': "#545454"
-            }
-        });
+    function applyMapStyle(source) {
+        map.on('load', function () {
+            map.loadImage("/static/png/elevators.png", (e, image) => {
+                map.addImage("elevators", image);
+            });
+            map.loadImage("/static/png/Stairs.png", (e, image) => {
+                map.addImage("Stairs", image);
+            });
+            map.loadImage("/static/png/Washroom Male.png", (e, image) => {
+                map.addImage("male", image);
+            });
+            map.loadImage("/static/png/Washroom Female.png", (e, image) => {
+                map.addImage("female", image);
+            });
+            map.loadImage("/static/png/Washroom Neutral.png", (e, image) => {
+                map.addImage("neutral", image);
+            });
+            map.loadImage("/static/png/Water Fountain 2.png", (e, image) => {
+                map.addImage("fountain", image);
+            });
+            map.loadImage("/static/png/Information.png", (e, image) => {
+                map.addImage("Information", image);
+            });
 
-        map.addLayer({
-            "id": "rb",
-            "type": "fill",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "type"], "room"]
-            ],
-            'layout': {
-                'visibility': 'visible'
-            },
-            "paint": {
-                'fill-color': [
-                    "match",
-                    ["get", "room-type"],
+            var mapUrl = "/map/" + source.building;
 
-                    "room",
-                    [
-                        "case",
-                        ["==", ["get","available"], true],
-                        "#b17fe2",
-                        "#CCCCCC"
-                    ],
-                    "washroom",
-                    "#ffe544",
-                    "elevator",
-                    "#ff1131",
-                    "stairs",
-                    "#008ddc",
-                    "hallway",
-                    "#FEFEFE",
-                    "#545454"
-                ]
-            }
-        });
 
-        map.addLayer({
-            "id": "rb-name",
-            "type": "symbol",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "type"], "backdrop"]
-            ],
-            'layout': {
-                'visibility': 'visible',
-                "text-field": ["get", "name"]
-            },
-            "paint": {
-                "text-color": "#FFFFFF",
-                "text-halo-width": 1,
-                "text-halo-color": "#000000"
 
-            },
+            map.addSource(source.id, {
+                type: 'geojson',
+                data: mapUrl
+            });
 
-            "maxzoom": 18
-        });
 
-        map.addLayer({
-            "id": "rb-lines",
-            "type": "line",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "type"], "line"]
-            ],
-            'layout': {
-                'visibility': 'visible'
-            },
-            "paint": {
-                "line-color": "#212121",
-                "line-width":
-                    [
+
+            map.addLayer({
+                "id": "rb-backdrop",
+                "type": "fill",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "type"], "backdrop"]
+                ],
+                'layout': {
+                    'visibility': 'visible'
+                },
+                "paint": {
+                    'fill-color': "#545454"
+                }
+            });
+
+            map.addLayer({
+                "id": "rb",
+                "type": "fill",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "type"], "room"]
+                ],
+                'layout': {
+                    'visibility': 'visible'
+                },
+                "paint": {
+                    'fill-color': [
+                        "match",
+                        ["get", "room-type"],
+
+                        "room",
+                        [
+                            "case",
+                            ["==", ["get", "available"], true],
+                            "#b17fe2",
+                            "#CCCCCC"
+                        ],
+                        "washroom",
+                        "#ffe544",
+                        "elevator",
+                        "#ff1131",
+                        "stairs",
+                        "#008ddc",
+                        "hallway",
+                        "#FEFEFE",
+                        "#545454"
+                    ]
+                }
+            });
+
+            map.addLayer({
+                "id": "rb-name",
+                "type": "symbol",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "type"], "backdrop"]
+                ],
+                'layout': {
+                    'visibility': 'visible',
+                    "text-field": ["get", "name"]
+                },
+                "paint": {
+                    "text-color": "#FFFFFF",
+                    "text-halo-width": 1,
+                    "text-halo-color": "#000000"
+
+                },
+
+                "maxzoom": 18
+            });
+
+            map.addLayer({
+                "id": "rb-lines",
+                "type": "line",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "type"], "line"]
+                ],
+                'layout': {
+                    'visibility': 'visible'
+                },
+                "paint": {
+                    "line-color": "#212121",
+                    "line-width":
+                        [
+                            'interpolate',
+                            ['linear'],
+                            ['zoom'],
+                            18, 0, 19, 3
+                        ]
+                },
+            });
+
+            map.addLayer({
+                "id": "rb-backdrop-lines",
+                "type": "line",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "type"], "backdrop-line"]
+                ],
+                'layout': {
+                    'visibility': 'visible'
+                },
+                "paint": {
+                    "line-color": "#212121",
+                    "line-width": 5,
+                    "line-opacity": [
                         'interpolate',
                         ['linear'],
                         ['zoom'],
-                        18, 0, 19, 3
+                        17, 0, 18, 1
                     ]
-            },
-        });
+                },
+            });
 
-        map.addLayer({
-            "id": "rb-backdrop-lines",
-            "type": "line",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "type"], "backdrop-line"]
-            ],
-            'layout': {
-                'visibility': 'visible'
-            },
-            "paint": {
-                "line-color": "#212121",
-                "line-width": 5,
-                "line-opacity": [
-                    'interpolate',
-                    ['linear'],
-                    ['zoom'],
-                    17, 0, 18, 1
-                ]
-            },
-        });
-
-        map.addLayer({
-            "id": "rb-symbols",
-            "type": "symbol",
-            "source": "river-building",
-            "filter": ["all",
-                ["==", ["get", "floor"], 'RB1'],
-                ["==", ["get", "label"], true]
-            ],
-            "layout": {
-                "text-field":[
+            map.addLayer({
+                "id": "rb-symbols",
+                "type": "symbol",
+                "source": "river-building",
+                "filter": ["all",
+                    ["==", ["get", "floor"], 'RB1'],
+                    ["==", ["get", "label"], true]
+                ],
+                "layout": {
+                    "text-field": [
                         "case",
-                        ["==", ["get","room-type"], "room"],
+                        ["==", ["get", "room-type"], "room"],
                         ["get", "name"],
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Men's"]
+                        ],
+                        "Male",
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Women's"]
+                        ],
+                        "Female",
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Neutral"]
+                        ],
+                        "Neutral",
                         ""
                     ],
-                "icon-image": [
+                    "icon-image": [
                         "case",
-                        ["==", ["get","room-type"], "room"],
-                        ["get", "name"],
+                        ["==", ["get", "room-type"], "stairs"],
+                        "Stairs",
+                        ["==", ["get", "room-type"], "elevator"],
+                        "elevators",
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Men's"]
+                        ],
+                        "male",
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Women's"]
+                        ],
+                        "female",
+                        ["all",
+                            ["==", ["get", "room-type"], "washroom"],
+                            ["==", ["get", "name"], "Neutral"]
+                        ],
+                        "neutral",
+                        ["==", ["get", "point-type"], "info"],
+                        "Information",
+                        ["==", ["get", "point-type"], "fountain"],
+                        "fountain",
                         ""
+
                     ],
-                "icon-size": 0.4,
-                //     "text-variable-anchor": ["center"],
-                //     "text-radial-offset": 0.5,
-                //     "text-justify": "auto",
-                'visibility': 'visible'
-                // },
-                // "paint": {
-                //     "text-color": "#ffffff"
-            },
-            "minzoom": 19
+                    "icon-size": 0.3,
+                    "text-variable-anchor": ["top"],
+                    "text-radial-offset": 0.5,
+                    "text-justify": "auto",
+                    'visibility': 'visible'
+                    // },
+                    // "paint": {
+                    //     "text-color": "#ffffff"
+                },
+                "minzoom": 19
+            });
         });
-        // map.addLayer({
-        //     "id": "L2-1",
-        //     "type": "fill",
-        //     "source": "river-building",
-        //     "filter": ["all",
-        //         ["==", ["get", "floor"], 2],
-        //         ["==", ["get", "type"], "backdrop"]
-        //     ],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         'fill-color': "#888888"
-        //     }
-        // });
+    }
 
-        // map.addLayer({
-        //     "id": "L2-2",
-        //     "type": "fill",
-        //     "source": "river-building",
-        //     "filter": ["all",
-        //         ["==", ["get", "floor"], 2],
-        //         ["!=", ["get", "type"], "backdrop"]
-        //     ],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         'fill-color': [
-        //             "match",
-        //             ["get", "type"],
-        //             "room",
-        //             "#9756D8",
-        //             "washroom",
-        //             "#f6d500",
-        //             "elevator",
-        //             "#dd001e",
-        //             "stairs",
-        //             "#006ca9",
-        //             "hallway",
-        //             "#FEFEFE",
-        //             "#AAAAAA"
-        //         ]
-        //     }
-        // });
-
-        // map.addLayer({
-        //     "id": "L2-3",
-        //     "type": "line",
-        //     "source": "river-building",
-        //     "filter": ["==", "floor", 2],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         "line-color": "#212121",
-        //         "line-width": 0.5
-        //     }
-        // });
-
-        // map.addLayer({
-        //     "id": "L2-4",
-        //     "type": "symbol",
-        //     "source": "river-building",
-        //     "filter": ["all", ["==", ["get", "floor"], 2], ["==", ["get", "label"], true]],
-        //     "layout": {
-        //         "text-field": ["get", "name"],
-        //         //     "text-variable-anchor": ["center"],
-        //         //     "text-radial-offset": 0.5,
-        //         //     "text-justify": "auto",
-        //         'visibility': 'none'
-        //         // },
-        //         // "paint": {
-        //         //     "text-color": "#ffffff"
-        //     }
-        // });
-        // map.addLayer({
-        //     "id": "L3-1",
-        //     "type": "fill",
-        //     "source": "river-building",
-        //     "filter": ["all",
-        //         ["==", ["get", "floor"], 3],
-        //         ["==", ["get", "type"], "backdrop"]
-        //     ],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         'fill-color': "#888888"
-        //     }
-        // });
-
-        // map.addLayer({
-        //     "id": "L3-2",
-        //     "type": "fill",
-        //     "source": "river-building",
-        //     "filter": ["all",
-        //         ["==", ["get", "floor"], 3],
-        //         ["!=", ["get", "type"], "backdrop"]
-        //     ],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         'fill-color': [
-        //             "match",
-        //             ["get", "type"],
-        //             "room",
-        //             "#9756D8",
-        //             "washroom",
-        //             "#f6d500",
-        //             "elevator",
-        //             "#dd001e",
-        //             "stairs",
-        //             "#006ca9",
-        //             "hallway",
-        //             "#FEFEFE",
-        //             "#AAAAAA"
-        //         ]
-        //     }
-        // });
-
-        // map.addLayer({
-        //     "id": "L3-3",
-        //     "type": "line",
-        //     "source": "river-building",
-        //     "filter": ["==", "floor", 3],
-        //     'layout': {
-        //         'visibility': 'none'
-        //     },
-        //     "paint": {
-        //         "line-color": "#212121",
-        //         "line-width": 0.5
-        //     }
-        // });
-
-        // map.addLayer({
-        //     "id": "L3-4",
-        //     "type": "symbol",
-        //     "source": "river-building",
-        //     "filter": ["all", ["==", ["get", "floor"], 3], ["==", ["get", "label"], true]],
-        //     "layout": {
-        //         "text-field": ["get", "name"],
-        //         //     "text-variable-anchor": ["center"],
-        //         //     "text-radial-offset": 0.5,
-        //         //     "text-justify": "auto",
-        //         'visibility': 'none'
-        //         // },
-        //         // "paint": {
-        //         //     "text-color": "#ffffff"
-        //     }
-        // });
+    applyMapStyle({ id: "river-building", building: "RB" });
+</script>
 
 
-        //     map.addLayer({
-        //         "id": "L1-3",
-        //         "type": "symbol",
-        //         "source": "river-building",
-        //         "layout": {
-        //             "text-field": ["get", "room"],
-        //             "text-variable-anchor": ["center"],
-        //             "text-radial-offset": 0.5,
-        //             "text-justify": "auto",
-        //             'visibility': 'visible'
-        //         },
-        //         "paint": {
-        //             "text-color": "#ffffff"
-        //         },
-        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
-        //     });
-        //     map.addLayer({
-        //         "id": "L1-4",
-        //         "type": "symbol",
-        //         "source": "river-building",
-        //         "layout": {
-        //             "icon-image": "toilet-15",
-        //             "text-field": "washroom",
-        //             "text-variable-anchor": ["top"],
-        //             "text-radial-offset": 0.5,
-        //             "text-justify": "auto",
-        //             'visibility': 'visible'
-        //         },
-        //         "paint": {
-        //             "text-color": "#ffffff"
-        //         },
-        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
-        //     });
-        //     map.addLayer({
-        //         "id": "L1-5",
-        //         "type": "symbol",
-        //         "source": "river-building",
-        //         "layout": {
-        //             "icon-image": "prison-11",
-        //             "text-field": "elevator",
-        //             "text-variable-anchor": ["top"],
-        //             "text-radial-offset": 0.5,
-        //             "text-justify": "auto",
-        //             'visibility': 'visible'
-        //         },
-        //         "paint": {
-        //             "text-color": "#ffffff"
-        //         },
-        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
-        //     });
-        //     map.addLayer({
-        //         "id": "L1-6",
-        //         "type": "symbol",
-        //         "source": "river-building",
-        //         "layout": {
-        //             "icon-image": "dot-9",
-        //             "text-field": "Stairs",
-        //             "text-variable-anchor": ["top"],
-        //             "text-radial-offset": 0.5,
-        //             "text-justify": "auto",
-        //             'visibility': 'visible'
-        //         },
-        //         "paint": {
-        //             "text-color": "#ffffff"
-        //         },
-        //         "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
-        //     });
-        //  
-    });
+            // map.addLayer({
+            //     "id": "L2-1",
+            //     "type": "fill",
+            //     "source": "river-building",
+            //     "filter": ["all",
+            //         ["==", ["get", "floor"], 2],
+            //         ["==", ["get", "type"], "backdrop"]
+            //     ],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         'fill-color': "#888888"
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L2-2",
+            //     "type": "fill",
+            //     "source": "river-building",
+            //     "filter": ["all",
+            //         ["==", ["get", "floor"], 2],
+            //         ["!=", ["get", "type"], "backdrop"]
+            //     ],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         'fill-color': [
+            //             "match",
+            //             ["get", "type"],
+            //             "room",
+            //             "#9756D8",
+            //             "washroom",
+            //             "#f6d500",
+            //             "elevator",
+            //             "#dd001e",
+            //             "stairs",
+            //             "#006ca9",
+            //             "hallway",
+            //             "#FEFEFE",
+            //             "#AAAAAA"
+            //         ]
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L2-3",
+            //     "type": "line",
+            //     "source": "river-building",
+            //     "filter": ["==", "floor", 2],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         "line-color": "#212121",
+            //         "line-width": 0.5
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L2-4",
+            //     "type": "symbol",
+            //     "source": "river-building",
+            //     "filter": ["all", ["==", ["get", "floor"], 2], ["==", ["get", "label"], true]],
+            //     "layout": {
+            //         "text-field": ["get", "name"],
+            //         //     "text-variable-anchor": ["center"],
+            //         //     "text-radial-offset": 0.5,
+            //         //     "text-justify": "auto",
+            //         'visibility': 'none'
+            //         // },
+            //         // "paint": {
+            //         //     "text-color": "#ffffff"
+            //     }
+            // });
+            // map.addLayer({
+            //     "id": "L3-1",
+            //     "type": "fill",
+            //     "source": "river-building",
+            //     "filter": ["all",
+            //         ["==", ["get", "floor"], 3],
+            //         ["==", ["get", "type"], "backdrop"]
+            //     ],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         'fill-color': "#888888"
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L3-2",
+            //     "type": "fill",
+            //     "source": "river-building",
+            //     "filter": ["all",
+            //         ["==", ["get", "floor"], 3],
+            //         ["!=", ["get", "type"], "backdrop"]
+            //     ],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         'fill-color': [
+            //             "match",
+            //             ["get", "type"],
+            //             "room",
+            //             "#9756D8",
+            //             "washroom",
+            //             "#f6d500",
+            //             "elevator",
+            //             "#dd001e",
+            //             "stairs",
+            //             "#006ca9",
+            //             "hallway",
+            //             "#FEFEFE",
+            //             "#AAAAAA"
+            //         ]
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L3-3",
+            //     "type": "line",
+            //     "source": "river-building",
+            //     "filter": ["==", "floor", 3],
+            //     'layout': {
+            //         'visibility': 'none'
+            //     },
+            //     "paint": {
+            //         "line-color": "#212121",
+            //         "line-width": 0.5
+            //     }
+            // });
+
+            // map.addLayer({
+            //     "id": "L3-4",
+            //     "type": "symbol",
+            //     "source": "river-building",
+            //     "filter": ["all", ["==", ["get", "floor"], 3], ["==", ["get", "label"], true]],
+            //     "layout": {
+            //         "text-field": ["get", "name"],
+            //         //     "text-variable-anchor": ["center"],
+            //         //     "text-radial-offset": 0.5,
+            //         //     "text-justify": "auto",
+            //         'visibility': 'none'
+            //         // },
+            //         // "paint": {
+            //         //     "text-color": "#ffffff"
+            //     }
+            // });
+
+
+            //     map.addLayer({
+            //         "id": "L1-3",
+            //         "type": "symbol",
+            //         "source": "river-building",
+            //         "layout": {
+            //             "text-field": ["get", "room"],
+            //             "text-variable-anchor": ["center"],
+            //             "text-radial-offset": 0.5,
+            //             "text-justify": "auto",
+            //             'visibility': 'visible'
+            //         },
+            //         "paint": {
+            //             "text-color": "#ffffff"
+            //         },
+            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
+            //     });
+            //     map.addLayer({
+            //         "id": "L1-4",
+            //         "type": "symbol",
+            //         "source": "river-building",
+            //         "layout": {
+            //             "icon-image": "toilet-15",
+            //             "text-field": "washroom",
+            //             "text-variable-anchor": ["top"],
+            //             "text-radial-offset": 0.5,
+            //             "text-justify": "auto",
+            //             'visibility': 'visible'
+            //         },
+            //         "paint": {
+            //             "text-color": "#ffffff"
+            //         },
+            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
+            //     });
+            //     map.addLayer({
+            //         "id": "L1-5",
+            //         "type": "symbol",
+            //         "source": "river-building",
+            //         "layout": {
+            //             "icon-image": "prison-11",
+            //             "text-field": "elevator",
+            //             "text-variable-anchor": ["top"],
+            //             "text-radial-offset": 0.5,
+            //             "text-justify": "auto",
+            //             'visibility': 'visible'
+            //         },
+            //         "paint": {
+            //             "text-color": "#ffffff"
+            //         },
+            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
+            //     });
+            //     map.addLayer({
+            //         "id": "L1-6",
+            //         "type": "symbol",
+            //         "source": "river-building",
+            //         "layout": {
+            //             "icon-image": "dot-9",
+            //             "text-field": "Stairs",
+            //             "text-variable-anchor": ["top"],
+            //             "text-radial-offset": 0.5,
+            //             "text-justify": "auto",
+            //             'visibility': 'visible'
+            //         },
+            //         "paint": {
+            //             "text-color": "#ffffff"
+            //         },
+            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
+            //     });
+            //  
+
 
     // document.getElementById("L1").onclick = function L1() {
     //     for (var i = 1; i < 5; i++) {
@@ -541,4 +615,3 @@
     //     // document.getElementById("map-main").classList.add("col-11");
     // }
 
-</script>
