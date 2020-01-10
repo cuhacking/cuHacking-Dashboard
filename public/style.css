@@ -43,6 +43,11 @@ html, body {
     color: #9756D8;
 }
 
+.map-container {
+    padding: 0;
+    height: 100vh;
+}
+
 @media screen and (max-width: 768px) {
     #navigation-box {
         position: fixed;
@@ -69,6 +74,12 @@ html, body {
     .event-type {
         font-size: smaller;
     }
+    .map-container {
+        margin-top: 50px;
+    }
+    .profile-container {
+        margin-top: 30px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -89,18 +100,17 @@ html, body {
 
 .Map {
     position: relative;
-    height: 600px;
 }
 
 #map {
     width: 100%;
-    height: 600px;
+    height: 100vh;
     position: absolute;
 }
 
 /* Map Navigation Button Style */
 
-#menu {
+.menu {
     background: #fff;
     position: absolute;
     z-index: 1;
@@ -111,7 +121,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#menu button {
+.menu button {
     background: white;
     font-size: 13px;
     color: #7C39BF;
@@ -124,17 +134,17 @@ html, body {
     text-align: center;
 }
 
-#menu button:hover {
+.menu button:hover {
     background-color: rgb(225, 225, 225);
     color: #404040;
 }
 
-#menu button.active {
+.menu button.active {
     background-color: #9756D8;
     color: #ffffff;
 }
 
-#menu button.active:hover {
+.menu button.active:hover {
     background: #8668AA;
 }
 
@@ -328,6 +338,16 @@ html, body {
 
 .Workshop.event-type {
     color: green;
+    font-weight: bold;
+}
+
+.Volunteer.card {
+    border: 2px solid orange;
+    border-left: 15px solid orange;
+}
+
+.Volunteer.event-type {
+    color: orange;
     font-weight: bold;
 }
 

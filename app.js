@@ -10,13 +10,8 @@ app.use('/static', express.static('public'));
 var baseUrl = "https://cuhacking.com/api";
 
 app.get("/", (req, res) => {
-    // res.render('countdown.ejs');
     res.redirect("/updates");
 })
-
-// app.get('/:a', (req, res) => {
-//     res.redirect('/');
-// })
 
 app.get('/profile', (req, res) => {
     request(baseUrl + "/schedule", function (error, response, body) {
@@ -27,7 +22,7 @@ app.get('/profile', (req, res) => {
             // Make an array of all schedule
             var arr = [];
             for (var id in schedule.schedule) {
-                if(schedule.schedule[id].type == "Volunteer"){
+                if (schedule.schedule[id].type == "Volunteer") {
                     arr.push(schedule.schedule[id]);
                 }
             }
@@ -53,8 +48,8 @@ app.get('/profile', (req, res) => {
                     x.endTime = moment(x.endTime).format("hh:mm A");
                     arr12.push(x);
                 }
-                else{
-                x.startTime = moment(x.startTime).format("hh:mm A");
+                else {
+                    x.startTime = moment(x.startTime).format("hh:mm A");
                     x.endTime = moment(x.endTime).format("hh:mm A");
                     arr.push(x);
                 }
@@ -88,7 +83,35 @@ app.get("/updates", (req, res) => {
                 // Make a nice string (e.g. '2 hours ago') of the delivery time
                 x.deliveryTime = moment(x.deliveryTime).fromNow();
             })
-            res.render("updates.ejs", { updates: sortedArray });
+            request(baseUrl + "/schedule", function (error, response, body) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    var schedule = JSON.parse(body);
+                    // Make an array of all schedule
+                    var arr = [];
+                    for (var id in schedule.schedule) {
+                        if (schedule.schedule[id].type != "Volunteer") {
+                            arr.push(schedule.schedule[id]);
+                        }
+                    }
+                    const sortedArraySchedule = arr.sort((a, b) => {
+                        if (moment(a.startTime).valueOf() < moment(b.startTime).valueOf()) return -1;
+                        if (moment(a.startTime).valueOf() > moment(b.startTime).valueOf()) return 1;
+                        return 0;
+                    })
+                    var arr22 = [];
+
+                    sortedArraySchedule.forEach(schedule => {
+                        if (schedule.countdown == true && moment(schedule.startTime).valueOf() > moment().valueOf()) {
+                            //
+                            schedule.startTime = moment(schedule.startTime).format();
+                            arr22.push(schedule);
+                        }
+                    })
+                    res.render("updates.ejs", { updates: sortedArray, schedule: arr22 });
+                }
+            })
         }
     });
 })
@@ -102,7 +125,7 @@ app.get("/schedule", (req, res) => {
             // Make an array of all schedule
             var arr = [];
             for (var id in schedule.schedule) {
-                if(schedule.schedule[id].type != "Volunteer"){
+                if (schedule.schedule[id].type != "Volunteer") {
                     arr.push(schedule.schedule[id]);
                 }
             }
@@ -128,8 +151,8 @@ app.get("/schedule", (req, res) => {
                     x.endTime = moment(x.endTime).format("hh:mm A");
                     arr12.push(x);
                 }
-                else{
-                x.startTime = moment(x.startTime).format("hh:mm A");
+                else {
+                    x.startTime = moment(x.startTime).format("hh:mm A");
                     x.endTime = moment(x.endTime).format("hh:mm A");
                     arr.push(x);
                 }
@@ -152,35 +175,18 @@ app.get('/info', (req, res) => {
 })
 
 app.get('/map', (req, res) => {
-    res.render('map.ejs');
+    request(baseUrl + "/map", function (error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            var info = JSON.parse(body).map.map;
+            res.render('map.ejs', { source: info });
+        }
+    });
 })
 
 app.get("/error", (req, res) => {
     res.render("error.ejs");
-})
-
-app.get("/map/RB", (req, res) =>{
-    request(baseUrl + "/map", function (error, response, body) {
-        if (error) {
-            console.log(error);
-        } else {
-            var info = JSON.parse(body).map.map.RB.geometry;
-
-            res.send(info);
-        }
-    });
-})
-
-app.get("/map/HS", (req, res) =>{
-    request(baseUrl + "/map", function (error, response, body) {
-        if (error) {
-            console.log(error);
-        } else {
-            var info = JSON.parse(body).map.map.HS.geometry;
-
-            res.send(info);
-        }
-    });
 })
 
 const PORT = process.env.PORT || 8000;

@@ -1,20 +1,13 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
     if (user) {
-        console.log('user logged in: ', user);
         user.getIdToken(/* forceRefresh */ true).then(function (x) {
+
             // Send token to your backend via HTTPS
-            // ...
             const Http = new XMLHttpRequest();
-            console.log(url);
-
-            console.log(url);
-
             Http.open("GET", url + 'users/profile');
-            console.log(x);
             Http.setRequestHeader('Authorization', 'Bearer ' + x);
             Http.send();
-
             Http.onreadystatechange = (e) => {
                 setupGuides(Http.responseText, user);
             }
@@ -22,7 +15,6 @@ auth.onAuthStateChanged(user => {
             // Handle error
         });
     } else {
-        console.log('user logged out');
         setupGuides2();
     }
 })
