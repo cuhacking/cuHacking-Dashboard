@@ -16,7 +16,7 @@ auth.onAuthStateChanged(user => {
             Http.send();
 
             Http.onreadystatechange = (e) => {
-                setupGuides(Http.responseText);
+                setupGuides(Http.responseText, user);
             }
         }).catch(function (error) {
             // Handle error

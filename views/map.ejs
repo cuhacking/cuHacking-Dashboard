@@ -95,13 +95,6 @@
                 "id": "rb-backdrop",
                 "type": "fill",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "type"], "backdrop"]
-                ],
-                'layout': {
-                    'visibility': 'visible'
-                },
                 "paint": {
                     'fill-color': "#545454"
                 }
@@ -111,10 +104,6 @@
                 "id": "rb",
                 "type": "fill",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "type"], "room"]
-                ],
                 'layout': {
                     'visibility': 'visible'
                 },
@@ -147,10 +136,6 @@
                 "id": "rb-name",
                 "type": "symbol",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "type"], "backdrop"]
-                ],
                 'layout': {
                     'visibility': 'visible',
                     "text-field": ["get", "name"]
@@ -169,10 +154,6 @@
                 "id": "rb-lines",
                 "type": "line",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "type"], "line"]
-                ],
                 'layout': {
                     'visibility': 'visible'
                 },
@@ -192,10 +173,6 @@
                 "id": "rb-backdrop-lines",
                 "type": "line",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "type"], "backdrop-line"]
-                ],
                 'layout': {
                     'visibility': 'visible'
                 },
@@ -215,10 +192,7 @@
                 "id": "rb-symbols",
                 "type": "symbol",
                 "source": "river-building",
-                "filter": ["all",
-                    ["==", ["get", "floor"], 'RB1'],
-                    ["==", ["get", "label"], true]
-                ],
+
                 "layout": {
                     "text-field": [
                         "case",
@@ -278,340 +252,317 @@
                     // "paint": {
                     //     "text-color": "#ffffff"
                 },
-                "minzoom": 19
+                "minzoom": 18.3
             });
+
+            setLayerFilters(1);
+
         });
+
     }
 
     applyMapStyle({ id: "river-building", building: "RB" });
+
+    function setLayerFilters(floor) {
+
+        map.setFilter('rb-backdrop', ["all",
+            ["==", ["get", "floor"], 'RB' + floor],
+            ["==", ["get", "type"], "backdrop"]
+        ]);
+        map.setFilter('rb', ["all",
+            ["==", ["get", "floor"], 'RB' + floor],
+            ["==", ["get", "type"], "room"]
+        ]);
+        map.setFilter('rb-name', ["all",
+            ["==", ["get", "floor"], 'RB' + floor],
+            ["==", ["get", "type"], "backdrop"]
+        ]);
+        map.setFilter('rb-lines',
+            ["all",
+                ["==", ["get", "floor"], 'RB' + floor],
+                ["==", ["get", "type"], "line"]
+            ]);
+        map.setFilter('rb-backdrop-lines', ["all",
+            ["==", ["get", "floor"], 'RB' + floor],
+            ["==", ["get", "type"], "backdrop-line"]
+        ]);
+        map.setFilter('rb-symbols', ["all",
+            ["==", ["get", "floor"], 'RB' + floor],
+            ["==", ["get", "label"], true]
+        ]);
+    }
+
 </script>
+<button onclick="setLayerFilters(2);">2</button>
+<!-- 
+
+// map.addLayer({
+// "id": "L2-1",
+// "type": "fill",
+// "source": "river-building",
+// "filter": ["all",
+// ["==", ["get", "floor"], 2],
+// ["==", ["get", "type"], "backdrop"]
+// ],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// 'fill-color': "#888888"
+// }
+// });
+
+// map.addLayer({
+// "id": "L2-2",
+// "type": "fill",
+// "source": "river-building",
+// "filter": ["all",
+// ["==", ["get", "floor"], 2],
+// ["!=", ["get", "type"], "backdrop"]
+// ],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// 'fill-color': [
+// "match",
+// ["get", "type"],
+// "room",
+// "#9756D8",
+// "washroom",
+// "#f6d500",
+// "elevator",
+// "#dd001e",
+// "stairs",
+// "#006ca9",
+// "hallway",
+// "#FEFEFE",
+// "#AAAAAA"
+// ]
+// }
+// });
+
+// map.addLayer({
+// "id": "L2-3",
+// "type": "line",
+// "source": "river-building",
+// "filter": ["==", "floor", 2],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// "line-color": "#212121",
+// "line-width": 0.5
+// }
+// });
+
+// map.addLayer({
+// "id": "L2-4",
+// "type": "symbol",
+// "source": "river-building",
+// "filter": ["all", ["==", ["get", "floor"], 2], ["==", ["get", "label"], true]],
+// "layout": {
+// "text-field": ["get", "name"],
+// // "text-variable-anchor": ["center"],
+// // "text-radial-offset": 0.5,
+// // "text-justify": "auto",
+// 'visibility': 'none'
+// // },
+// // "paint": {
+// // "text-color": "#ffffff"
+// }
+// });
+// map.addLayer({
+// "id": "L3-1",
+// "type": "fill",
+// "source": "river-building",
+// "filter": ["all",
+// ["==", ["get", "floor"], 3],
+// ["==", ["get", "type"], "backdrop"]
+// ],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// 'fill-color': "#888888"
+// }
+// });
+
+// map.addLayer({
+// "id": "L3-2",
+// "type": "fill",
+// "source": "river-building",
+// "filter": ["all",
+// ["==", ["get", "floor"], 3],
+// ["!=", ["get", "type"], "backdrop"]
+// ],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// 'fill-color': [
+// "match",
+// ["get", "type"],
+// "room",
+// "#9756D8",
+// "washroom",
+// "#f6d500",
+// "elevator",
+// "#dd001e",
+// "stairs",
+// "#006ca9",
+// "hallway",
+// "#FEFEFE",
+// "#AAAAAA"
+// ]
+// }
+// });
+
+// map.addLayer({
+// "id": "L3-3",
+// "type": "line",
+// "source": "river-building",
+// "filter": ["==", "floor", 3],
+// 'layout': {
+// 'visibility': 'none'
+// },
+// "paint": {
+// "line-color": "#212121",
+// "line-width": 0.5
+// }
+// });
+
+// map.addLayer({
+// "id": "L3-4",
+// "type": "symbol",
+// "source": "river-building",
+// "filter": ["all", ["==", ["get", "floor"], 3], ["==", ["get", "label"], true]],
+// "layout": {
+// "text-field": ["get", "name"],
+// // "text-variable-anchor": ["center"],
+// // "text-radial-offset": 0.5,
+// // "text-justify": "auto",
+// 'visibility': 'none'
+// // },
+// // "paint": {
+// // "text-color": "#ffffff"
+// }
+// });
 
 
-            // map.addLayer({
-            //     "id": "L2-1",
-            //     "type": "fill",
-            //     "source": "river-building",
-            //     "filter": ["all",
-            //         ["==", ["get", "floor"], 2],
-            //         ["==", ["get", "type"], "backdrop"]
-            //     ],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         'fill-color': "#888888"
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L2-2",
-            //     "type": "fill",
-            //     "source": "river-building",
-            //     "filter": ["all",
-            //         ["==", ["get", "floor"], 2],
-            //         ["!=", ["get", "type"], "backdrop"]
-            //     ],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         'fill-color': [
-            //             "match",
-            //             ["get", "type"],
-            //             "room",
-            //             "#9756D8",
-            //             "washroom",
-            //             "#f6d500",
-            //             "elevator",
-            //             "#dd001e",
-            //             "stairs",
-            //             "#006ca9",
-            //             "hallway",
-            //             "#FEFEFE",
-            //             "#AAAAAA"
-            //         ]
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L2-3",
-            //     "type": "line",
-            //     "source": "river-building",
-            //     "filter": ["==", "floor", 2],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         "line-color": "#212121",
-            //         "line-width": 0.5
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L2-4",
-            //     "type": "symbol",
-            //     "source": "river-building",
-            //     "filter": ["all", ["==", ["get", "floor"], 2], ["==", ["get", "label"], true]],
-            //     "layout": {
-            //         "text-field": ["get", "name"],
-            //         //     "text-variable-anchor": ["center"],
-            //         //     "text-radial-offset": 0.5,
-            //         //     "text-justify": "auto",
-            //         'visibility': 'none'
-            //         // },
-            //         // "paint": {
-            //         //     "text-color": "#ffffff"
-            //     }
-            // });
-            // map.addLayer({
-            //     "id": "L3-1",
-            //     "type": "fill",
-            //     "source": "river-building",
-            //     "filter": ["all",
-            //         ["==", ["get", "floor"], 3],
-            //         ["==", ["get", "type"], "backdrop"]
-            //     ],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         'fill-color': "#888888"
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L3-2",
-            //     "type": "fill",
-            //     "source": "river-building",
-            //     "filter": ["all",
-            //         ["==", ["get", "floor"], 3],
-            //         ["!=", ["get", "type"], "backdrop"]
-            //     ],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         'fill-color': [
-            //             "match",
-            //             ["get", "type"],
-            //             "room",
-            //             "#9756D8",
-            //             "washroom",
-            //             "#f6d500",
-            //             "elevator",
-            //             "#dd001e",
-            //             "stairs",
-            //             "#006ca9",
-            //             "hallway",
-            //             "#FEFEFE",
-            //             "#AAAAAA"
-            //         ]
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L3-3",
-            //     "type": "line",
-            //     "source": "river-building",
-            //     "filter": ["==", "floor", 3],
-            //     'layout': {
-            //         'visibility': 'none'
-            //     },
-            //     "paint": {
-            //         "line-color": "#212121",
-            //         "line-width": 0.5
-            //     }
-            // });
-
-            // map.addLayer({
-            //     "id": "L3-4",
-            //     "type": "symbol",
-            //     "source": "river-building",
-            //     "filter": ["all", ["==", ["get", "floor"], 3], ["==", ["get", "label"], true]],
-            //     "layout": {
-            //         "text-field": ["get", "name"],
-            //         //     "text-variable-anchor": ["center"],
-            //         //     "text-radial-offset": 0.5,
-            //         //     "text-justify": "auto",
-            //         'visibility': 'none'
-            //         // },
-            //         // "paint": {
-            //         //     "text-color": "#ffffff"
-            //     }
-            // });
+// map.addLayer({
+// "id": "L1-3",
+// "type": "symbol",
+// "source": "river-building",
+// "layout": {
+// "text-field": ["get", "room"],
+// "text-variable-anchor": ["center"],
+// "text-radial-offset": 0.5,
+// "text-justify": "auto",
+// 'visibility': 'visible'
+// },
+// "paint": {
+// "text-color": "#ffffff"
+// },
+// "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
+// });
+// map.addLayer({
+// "id": "L1-4",
+// "type": "symbol",
+// "source": "river-building",
+// "layout": {
+// "icon-image": "toilet-15",
+// "text-field": "washroom",
+// "text-variable-anchor": ["top"],
+// "text-radial-offset": 0.5,
+// "text-justify": "auto",
+// 'visibility': 'visible'
+// },
+// "paint": {
+// "text-color": "#ffffff"
+// },
+// "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
+// });
+// map.addLayer({
+// "id": "L1-5",
+// "type": "symbol",
+// "source": "river-building",
+// "layout": {
+// "icon-image": "prison-11",
+// "text-field": "elevator",
+// "text-variable-anchor": ["top"],
+// "text-radial-offset": 0.5,
+// "text-justify": "auto",
+// 'visibility': 'visible'
+// },
+// "paint": {
+// "text-color": "#ffffff"
+// },
+// "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
+// });
+// map.addLayer({
+// "id": "L1-6",
+// "type": "symbol",
+// "source": "river-building",
+// "layout": {
+// "icon-image": "dot-9",
+// "text-field": "Stairs",
+// "text-variable-anchor": ["top"],
+// "text-radial-offset": 0.5,
+// "text-justify": "auto",
+// 'visibility': 'visible'
+// },
+// "paint": {
+// "text-color": "#ffffff"
+// },
+// "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
+// });
+//
 
 
-            //     map.addLayer({
-            //         "id": "L1-3",
-            //         "type": "symbol",
-            //         "source": "river-building",
-            //         "layout": {
-            //             "text-field": ["get", "room"],
-            //             "text-variable-anchor": ["center"],
-            //             "text-radial-offset": 0.5,
-            //             "text-justify": "auto",
-            //             'visibility': 'visible'
-            //         },
-            //         "paint": {
-            //             "text-color": "#ffffff"
-            //         },
-            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "room"]]
-            //     });
-            //     map.addLayer({
-            //         "id": "L1-4",
-            //         "type": "symbol",
-            //         "source": "river-building",
-            //         "layout": {
-            //             "icon-image": "toilet-15",
-            //             "text-field": "washroom",
-            //             "text-variable-anchor": ["top"],
-            //             "text-radial-offset": 0.5,
-            //             "text-justify": "auto",
-            //             'visibility': 'visible'
-            //         },
-            //         "paint": {
-            //             "text-color": "#ffffff"
-            //         },
-            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "washroom"]]
-            //     });
-            //     map.addLayer({
-            //         "id": "L1-5",
-            //         "type": "symbol",
-            //         "source": "river-building",
-            //         "layout": {
-            //             "icon-image": "prison-11",
-            //             "text-field": "elevator",
-            //             "text-variable-anchor": ["top"],
-            //             "text-radial-offset": 0.5,
-            //             "text-justify": "auto",
-            //             'visibility': 'visible'
-            //         },
-            //         "paint": {
-            //             "text-color": "#ffffff"
-            //         },
-            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "elevator"]]
-            //     });
-            //     map.addLayer({
-            //         "id": "L1-6",
-            //         "type": "symbol",
-            //         "source": "river-building",
-            //         "layout": {
-            //             "icon-image": "dot-9",
-            //             "text-field": "Stairs",
-            //             "text-variable-anchor": ["top"],
-            //             "text-radial-offset": 0.5,
-            //             "text-justify": "auto",
-            //             'visibility': 'visible'
-            //         },
-            //         "paint": {
-            //             "text-color": "#ffffff"
-            //         },
-            //         "filter": ["all", ["==", "floor", 1], ["==", "type", "stairs"]]
-            //     });
-            //  
-
-
-    // document.getElementById("L1").onclick = function L1() {
-    //     for (var i = 1; i < 5; i++) {
-    //         map.setLayoutProperty("L2-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L3-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L1-" + i, 'visibility', 'visible');
-    //     }
-    //     for (var k = 1; k < 4; k++) {
-    //         document.getElementById("L" + k).className = "";
-    //     }
-    //     document.getElementById("L1").className = "active";
-    // };
-
-    // document.getElementById("L2").onclick = function L2() {
-    //     for (var i = 1; i < 5; i++) {
-    //         map.setLayoutProperty("L1-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L3-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L2-" + i, 'visibility', 'visible');
-    //     }
-    //     for (var k = 1; k < 4; k++) {
-    //         document.getElementById("L" + k).className = "";
-    //     }
-    //     document.getElementById("L2").className = "active";
-    // };
-
-    // document.getElementById("L3").onclick = function L3() {
-    //     for (var i = 1; i < 5; i++) {
-    //         map.setLayoutProperty("L1-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L2-" + i, 'visibility', 'none');
-    //         map.setLayoutProperty("L3-" + i, 'visibility', 'visible');
-    //     }
-    //     for (var k = 1; k < 4; k++) {
-    //         document.getElementById("L" + k).className = "";
-    //     }
-    //     document.getElementById("L3").className = "active";
-    // };
-
-    // map.on('click', 'L1-2', function (e) {
-    //     // document.getElementById("right-side-bar").classList.remove("col-1");
-    //     // document.getElementById("right-side-bar").classList.add("col-3");
-    //     // document.getElementById("map-main").classList.remove("col-11");
-    //     // document.getElementById("map-main").classList.add("col-9");
-    //     document.getElementById("right-side-bar").style.display = "block";
-    //     document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
-
-    // });
-
-    // // Change the cursor to a pointer when the mouse is over the states layer.
-    // map.on('mouseenter', 'L1-2', function () {
-    //     map.getCanvas().style.cursor = 'pointer';
-    // });
-
-    // // Change it back to a pointer when it leaves.
-    // map.on('mouseleave', 'L1-2', function () {
-    //     map.getCanvas().style.cursor = '';
-    // });
-
-    // map.on('click', 'L2-2', function (e) {
-    //     // document.getElementById("right-side-bar").classList.remove("col-1");
-    //     // document.getElementById("right-side-bar").classList.add("col-3");
-    //     // document.getElementById("map-main").classList.remove("col-11");
-    //     // document.getElementById("map-main").classList.add("col-9");
-    //     document.getElementById("right-side-bar").style.display = "block";
-    //     document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
-
-    // });
-
-    // // Change the cursor to a pointer when the mouse is over the states layer.
-    // map.on('mouseenter', 'L2-2', function () {
-    //     map.getCanvas().style.cursor = 'pointer';
-    // });
-
-    // // Change it back to a pointer when it leaves.
-    // map.on('mouseleave', 'L2-2', function () {
-    //     map.getCanvas().style.cursor = '';
-    // });
-
-    // map.on('click', 'L3-2', function (e) {
-    //     // document.getElementById("right-side-bar").classList.remove("col-1");
-    //     // document.getElementById("right-side-bar").classList.add("col-3");
-    //     // document.getElementById("map-main").classList.remove("col-11");
-    //     // document.getElementById("map-main").classList.add("col-9");
-    //     document.getElementById("right-side-bar").style.display = "block";
-    //     document.getElementById("info").innerHTML = "Room No: " + e.features[0].properties.room;
-
-    // });
-
-    // // Change the cursor to a pointer when the mouse is over the states layer.
-    // map.on('mouseenter', 'L3-2', function () {
-    //     map.getCanvas().style.cursor = 'pointer';
-    // });
-
-    // // Change it back to a pointer when it leaves.
-    // map.on('mouseleave', 'L3-2', function () {
-    //     map.getCanvas().style.cursor = '';
-    // });
-
-    // document.getElementById("close").onclick = function () {
-    //     document.getElementById("right-side-bar").style.display = 'none';
-    //     // document.getElementById("right-side-bar").classList.remove("col-3");
-    //     // document.getElementById("right-side-bar").classList.add("col-1");
-    //     // document.getElementById("map-main").classList.remove("col-9");
-    //     // document.getElementById("map-main").classList.add("col-11");
-    // }
-
+// document.getElementById("L1").onclick = function L1() {
+// for (var i = 1; i < 5; i++) { // map.setLayoutProperty("L2-" + i, 'visibility' , 'none' ); //
+    map.setLayoutProperty("L3-" + i, 'visibility' , 'none' ); // map.setLayoutProperty("L1-" + i, 'visibility'
+    , 'visible' ); // } // for (var k=1; k < 4; k++) { // document.getElementById("L" + k).className="" ; // } //
+    document.getElementById("L1").className="active" ; // }; // document.getElementById("L2").onclick=function L2() { //
+    for (var i=1; i < 5; i++) { // map.setLayoutProperty("L1-" + i, 'visibility' , 'none' ); //
+    map.setLayoutProperty("L3-" + i, 'visibility' , 'none' ); // map.setLayoutProperty("L2-" + i, 'visibility'
+    , 'visible' ); // } // for (var k=1; k < 4; k++) { // document.getElementById("L" + k).className="" ; // } //
+    document.getElementById("L2").className="active" ; // }; // document.getElementById("L3").onclick=function L3() { //
+    for (var i=1; i < 5; i++) { // map.setLayoutProperty("L1-" + i, 'visibility' , 'none' ); //
+    map.setLayoutProperty("L2-" + i, 'visibility' , 'none' ); // map.setLayoutProperty("L3-" + i, 'visibility'
+    , 'visible' ); // } // for (var k=1; k < 4; k++) { // document.getElementById("L" + k).className="" ; // } //
+    document.getElementById("L3").className="active" ; // }; // map.on('click', 'L1-2' , function (e) { // //
+    document.getElementById("right-side-bar").classList.remove("col-1"); // //
+    document.getElementById("right-side-bar").classList.add("col-3"); // //
+    document.getElementById("map-main").classList.remove("col-11"); // //
+    document.getElementById("map-main").classList.add("col-9"); //
+    document.getElementById("right-side-bar").style.display="block" ; //
+    document.getElementById("info").innerHTML="Room No: " + e.features[0].properties.room; // }); // // Change the
+    cursor to a pointer when the mouse is over the states layer. // map.on('mouseenter', 'L1-2' , function () { //
+    map.getCanvas().style.cursor='pointer' ; // }); // // Change it back to a pointer when it leaves. //
+    map.on('mouseleave', 'L1-2' , function () { // map.getCanvas().style.cursor='' ; // }); // map.on('click', 'L2-2' ,
+    function (e) { // // document.getElementById("right-side-bar").classList.remove("col-1"); // //
+    document.getElementById("right-side-bar").classList.add("col-3"); // //
+    document.getElementById("map-main").classList.remove("col-11"); // //
+    document.getElementById("map-main").classList.add("col-9"); //
+    document.getElementById("right-side-bar").style.display="block" ; //
+    document.getElementById("info").innerHTML="Room No: " + e.features[0].properties.room; // }); // // Change the
+    cursor to a pointer when the mouse is over the states layer. // map.on('mouseenter', 'L2-2' , function () { //
+    map.getCanvas().style.cursor='pointer' ; // }); // // Change it back to a pointer when it leaves. //
+    map.on('mouseleave', 'L2-2' , function () { // map.getCanvas().style.cursor='' ; // }); // map.on('click', 'L3-2' ,
+    function (e) { // // document.getElementById("right-side-bar").classList.remove("col-1"); // //
+    document.getElementById("right-side-bar").classList.add("col-3"); // //
+    document.getElementById("map-main").classList.remove("col-11"); // //
+    document.getElementById("map-main").classList.add("col-9"); //
+    document.getElementById("right-side-bar").style.display="block" ; //
+    document.getElementById("info").innerHTML="Room No: " + e.features[0].properties.room; // }); // // Change the
+    cursor to a pointer when the mouse is over the states layer. // map.on('mouseenter', 'L3-2' , function () { //
+    map.getCanvas().style.cursor='pointer' ; // }); // // Change it back to a pointer when it leaves. //
+    map.on('mouseleave', 'L3-2' , function () { // map.getCanvas().style.cursor='' ; // }); //
+    document.getElementById("close").onclick=function () { //
+    document.getElementById("right-side-bar").style.display='none' ; // //
+    document.getElementById("right-side-bar").classList.remove("col-3"); // //
+    document.getElementById("right-side-bar").classList.add("col-1"); // //
+    document.getElementById("map-main").classList.remove("col-9"); // //
+    document.getElementById("map-main").classList.add("col-11"); // } -->

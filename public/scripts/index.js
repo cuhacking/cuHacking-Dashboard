@@ -2,7 +2,7 @@
 const guideList = document.querySelector('#content');
 
 // setup guides
-const setupGuides = (data1) => {
+const setupGuides = (data1, user) => {
     document.getElementById('login-box').style.display = 'none';
     document.getElementById('logout').style.display = 'block';
     var data = JSON.parse(data1);
@@ -63,7 +63,7 @@ const setupGuides = (data1) => {
 </div>`;
     guideList.innerHTML = html;
     new QRCode(document.getElementById("qrcode"), {
-        text: 'rYttTGsUmhYzZF69YpWVqeR5nxJ3',
+        text: user.uid,
         width: 184,
         height: 184,
         colorDark: "#000000",

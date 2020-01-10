@@ -66,7 +66,7 @@ html, body {
     #main-content {
         margin-top: -44px;
     }
-    .event-type{
+    .event-type {
         font-size: smaller;
     }
 }
@@ -289,60 +289,55 @@ html, body {
 .Food.event-type {
     color: red;
     font-weight: bold;
-
-
 }
 
 .Key.card {
     border: 2px solid var(--darkPrimaryColour);
     border-left: 15px solid var(--darkPrimaryColour);
 }
-.Key.event-type{
+
+.Key.event-type {
     color: var(--darkPrimaryColour);
     font-weight: bold;
-
-
 }
 
 .Sponsor.card {
     border: 2px solid var(--yellow);
     border-left: 15px solid var(--yellow);
 }
-.Sponsor.event-type{
-color: var(--yellow);
-font-weight: bold;
 
+.Sponsor.event-type {
+    color: var(--yellow);
+    font-weight: bold;
 }
 
 .Social.card {
     border: 2px solid blue;
     border-left: 15px solid blue;
 }
-.Social.event-type{
-    color:blue;
+
+.Social.event-type {
+    color: blue;
     font-weight: bold;
-
-
 }
 
 .Workshop.card {
     border: 2px solid green;
     border-left: 15px solid green;
 }
-.Workshop.event-type{
-color:green;
-font-weight: bold;
 
+.Workshop.event-type {
+    color: green;
+    font-weight: bold;
 }
 
 .schedule-moreinfo {
-    text-decoration: none; 
+    text-decoration: none;
     color: black;
-
 }
 
-.schedule-moreinfo:hover{
+.schedule-moreinfo:hover {
     background-color: rgba(151, 86, 216, 0.25);
-    text-decoration: none; 
+    text-decoration: none;
     color: black;
 }
