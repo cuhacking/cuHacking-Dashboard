@@ -10,17 +10,47 @@
 
         <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
             <div class="container">
+
                 <h1 class="display-4 py-3 heading-font">Updates</h1>
 
                 <div class="row">
-                    <div class="col-md-8">
-                        <% 
+                    <div class="col-md-7">
+                        <%if(schedule.length != 0){ %>
+                        <div class="card my-3 updates-cards">
+
+                            <div class="card-body text-center">
+                                <div id="countdown-id" style="display: none;"><%=schedule[0].startTime%></div>
+                                <h4 class="heading-card heading-font"><span>
+                                        <%=schedule[0].title%>
+
+                                    </span> in <span id="hours"></span> : <span id="minutes"></span> :
+                                    <span id="seconds"></span>
+                                </h4>
+                            </div>
+                        </div>
+                        <%}else{%>
+                        <div class="card my-3 updates-cards">
+
+                            <div class="card-body text-center">
+                                <div id="countdown-id" style="display: none;"></div>
+                                <h4 class="heading-card heading-font"><span>
+                                        Thanks for attending cuHacking!
+                                </h4>
+                            </div>
+                        </div>
+
+
+                        <%}%>
+                        <% if(updates.length == 0){ %>
+                        <p class="updates-cards-time">No updates to show</p>
+
+                        <%}else{
                         // Displays the announcements in reverse order.
                         var arr = updates.reverse();
                         arr.forEach(update =>{ %>
                         <div class="card my-3 updates-cards">
                             <div class="card-body">
-                                <h4 class="heading-card heading-font"><%= update.title %></h4>
+                                <h4 class="heading-card heading-font"><%= update.name %></h4>
                                 <div class="updates-cards-time">
                                     <small>
                                         <%= update.deliveryTime %>
@@ -29,11 +59,49 @@
                                 <div class="my-2"><%= update.description %></div>
                             </div>
                         </div>
-                        <% }) %>
+                        <% })} %>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <% include ./partials/footer.ejs %>
+<script>
+
+    // Set the date we're counting down to
+    var time = document.getElementById("countdown-id").innerHTML;
+    if (time != "") {
+        var countDownDate = new Date(time).getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element
+            // document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // If the count down is finished, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "Thank You for attending cuHacking!";
+            }
+        }, 1000);
+    }
+</script>
+
+<% include ./partials/footer.ejs %>

@@ -1,0 +1,245 @@
+<% include ./partials/header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+        <% include ./partials/navbar.ejs %>
+
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('profile-link').classList.add('active');
+            document.getElementById('active-box-profile').classList.add('navigation-link-left-box');
+        </script>
+
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3 profile-container">
+            <div class="container main-box">
+                <div class="row py-3" id="login-box" style="display: none">
+                    <div class="col-md-6 text-center">
+                        <h4 class="my-4">Please Sign In to view your Profile!</h4>
+                        <img src="/static/svg/smallLogo.svg" alt="" srcset="" class="my-4"
+                            style="height: 200px; width: 200px;">
+                        <form id="login-form" class="my-4">
+                            <div>
+                                <label for="login-email">Email address</label>
+                                <input type="email" id="login-email" required />
+                            </div>
+                            <div class="input-field">
+                                <label for="login-password">Your password</label>
+
+                                <input type="password" id="login-password" required />
+                            </div>
+                            <div class="text-right mr-4 my-2">
+                                <a href="http://my.cuhacking.com/forgot" class="mr-4 forgot-link">Forgot your
+                                    Password?</a>
+                            </div>
+                            <button class="my-4 login-button">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="content"></div>
+
+                <a href="#" id="logout" class="logout-link" style="display: none">Logout</a>
+
+                <div class="admin-schedule" style="display: none;">
+                    <h1 class="display-4 py-3 heading-font">Admin Schedule</h1>
+
+                    <%if(arr.length > 0){ %>
+                    <p class="updates-cards-time">Dates other than 11 January, 12 January</p>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <% arr.forEach(schedule=>{ %>
+                            <div class="row">
+                                <div class="col-3 my-3 text-right d-flex flex-column">
+                                    <h4>
+                                        <%= schedule.startTime %>
+                                    </h4>
+                                    <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                                </div>
+                                <div class="col-9">
+                                    <div class="card my-1 updates-cards <%=schedule.type%>">
+                                        <div class="card-body">
+                                            <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                            <div class="updates-cards-time">
+                                                <small>
+                                                    <%= schedule.startTime %> - <%= schedule.endTime %>
+                                                </small>
+                                            </div>
+                                            <div>
+                                                <small>
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    <%= schedule.location %>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+
+                        </div>
+                    </div>
+                    <%}%>
+
+                <p class="updates-cards-time">Saturday, December 11</p>
+                <div class="row">
+                    <div class="col-md-7">
+
+                    <% arr11.forEach(schedule=>{ %>
+                    <div class="row">
+                        <div class="col-3 my-3 text-right d-flex flex-column">
+                            <h4>
+                                <%= schedule.startTime %>
+                            </h4>
+                            <h6 class=" mt-auto event-type <%=schedule.type%>">
+                                <!-- <i class="fas fa-circle"></i> -->
+                                <%=schedule.type%> </h6>
+                        </div>
+                        <div class="col-9">
+                            <div class="card my-1 updates-cards <%=schedule.type%>">
+                                <a data-toggle="modal" href="#<%=schedule.id%>" class="schedule-moreinfo">
+
+                                    <div class="card-body">
+                                        <div class="modal fade" id="<%=schedule.id%>" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle"
+                                                            style="font-weight: bold;"><%=schedule.title%>
+                                                        </h5>
+                                                        <div style="color: #5827b8;">
+                                                            Saturday <%= schedule.startTime %> - <%= schedule.endTime %>
+                                                            |
+                                                            <i class="fas fa-circle event-type <%=schedule.type%>"></i>
+                                                            <%=schedule.type%> </div>
+
+                                                        <%=schedule.description%><br>
+                                                        Location: <i class="fas fa-map-marker-alt"></i>
+                                                        <%= schedule.location %>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                        <div class="updates-cards-time">
+                                            <div>
+                                                <%= schedule.startTime %> - <%= schedule.endTime %>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <%= schedule.location %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+
+            <p class="updates-cards-time">Sunday, December 12</p>
+            <div class="row">
+                <div class="col-md-7">
+                    <% arr12.forEach(schedule=>{ %>
+                    <div class="row">
+                        <div class="col-3 my-3 text-right d-flex flex-column">
+                            <h4>
+                                <%= schedule.startTime %>
+                            </h4>
+                            <h6 class=" mt-auto event-type <%=schedule.type%>"><%=schedule.type%></h6>
+                        </div>
+                        <div class="col-9">
+                            <div class="card my-1 updates-cards <%=schedule.type%>">
+                                <a data-toggle="modal" href="#<%=schedule.id%>" class="schedule-moreinfo">
+
+                                    <div class="card-body">
+                                        <div class="modal fade" id="<%=schedule.id%>" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle"
+                                                            style="font-weight: bold;"><%=schedule.title%>
+                                                        </h5>
+                                                        <div style="color: #5827b8;">
+                                                            Saturday <%= schedule.startTime %> - <%= schedule.endTime %>
+                                                            |
+                                                            <%=schedule.type%> </div>
+
+                                                        <%=schedule.description%><br>
+                                                        Location: <i class="fas fa-map-marker-alt"></i>
+                                                        <%= schedule.location %>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="heading-card heading-font"><%= schedule.title %></h4>
+                                        <div class="updates-cards-time">
+                                            <div>
+                                                <%= schedule.startTime %> - <%= schedule.endTime %>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <small>
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <%= schedule.location %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+<script src="/static/qrcode.min.js"></script>
+<script src="/static/scripts/config.js"></script>
+
+<script>
+
+    firebase.initializeApp(firebaseConfig);
+
+    // make auth and firestore references
+    const auth = firebase.auth();
+</script>
+<script src="/static/scripts/auth.js"></script>
+<script src="/static/scripts/index.js"></script>
+
+<% include ./partials/footer.ejs %>

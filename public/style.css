@@ -2,7 +2,7 @@
     --textColour: #000000;
     --secondTextColour: #FFFFFF;
     --lightPrimaryColour: #9756D8;
-    --primaryColour: #5827B8;
+    --primaryColour: #5827b8;
     --darkPrimaryColour: #280749;
     --secondaryColour: #00D0FE;
 }
@@ -43,6 +43,11 @@ html, body {
     color: #9756D8;
 }
 
+.map-container {
+    padding: 0;
+    height: 100vh;
+}
+
 @media screen and (max-width: 768px) {
     #navigation-box {
         position: fixed;
@@ -53,12 +58,27 @@ html, body {
         box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.25);
         z-index: 1999;
     }
+    #links34 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
     #navigation-box div div {
         text-align: center;
-        font-size: 15px;
+        font-size: 16px;
     }
     #main-content {
         margin-top: -44px;
+    }
+    .event-type {
+        font-size: smaller;
+    }
+    .map-container {
+        margin-top: 50px;
+    }
+    .profile-container {
+        margin-top: 30px;
     }
 }
 
@@ -80,18 +100,17 @@ html, body {
 
 .Map {
     position: relative;
-    height: 600px;
 }
 
 #map {
     width: 100%;
-    height: 600px;
+    height: 100vh;
     position: absolute;
 }
 
 /* Map Navigation Button Style */
 
-#menu {
+.menu {
     background: #fff;
     position: absolute;
     z-index: 1;
@@ -102,7 +121,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#menu button {
+.menu button {
     background: white;
     font-size: 13px;
     color: #7C39BF;
@@ -115,17 +134,17 @@ html, body {
     text-align: center;
 }
 
-#menu button:hover {
+.menu button:hover {
     background-color: rgb(225, 225, 225);
     color: #404040;
 }
 
-#menu button.active {
+.menu button.active {
     background-color: #9756D8;
     color: #ffffff;
 }
 
-#menu button.active:hover {
+.menu button.active:hover {
     background: #8668AA;
 }
 
@@ -244,4 +263,101 @@ html, body {
         height: 50px;
         margin: 0 5px;
     }
+}
+
+#login-email, #login-password {
+    width: 80%;
+}
+
+.login-button {
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: var(--primaryColour);
+    width: 40%;
+}
+
+.forgot-link {
+    color: var(--primaryColour);
+}
+
+.logout-link {
+    color: var(--primaryColour);
+    font-weight: bold;
+    font-size: large;
+}
+
+.Food.card {
+    border: 2px solid red;
+    border-left: 15px solid red;
+}
+
+.Food.event-type {
+    color: red;
+    font-weight: bold;
+}
+
+.Key.card {
+    border: 2px solid var(--darkPrimaryColour);
+    border-left: 15px solid var(--darkPrimaryColour);
+}
+
+.Key.event-type {
+    color: var(--darkPrimaryColour);
+    font-weight: bold;
+}
+
+.Sponsor.card {
+    border: 2px solid var(--yellow);
+    border-left: 15px solid var(--yellow);
+}
+
+.Sponsor.event-type {
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+.Social.card {
+    border: 2px solid blue;
+    border-left: 15px solid blue;
+}
+
+.Social.event-type {
+    color: blue;
+    font-weight: bold;
+}
+
+.Workshop.card {
+    border: 2px solid green;
+    border-left: 15px solid green;
+}
+
+.Workshop.event-type {
+    color: green;
+    font-weight: bold;
+}
+
+.Volunteer.card {
+    border: 2px solid orange;
+    border-left: 15px solid orange;
+}
+
+.Volunteer.event-type {
+    color: orange;
+    font-weight: bold;
+}
+
+.schedule-moreinfo {
+    text-decoration: none;
+    color: black;
+}
+
+.schedule-moreinfo:hover {
+    background-color: rgba(151, 86, 216, 0.25);
+    text-decoration: none;
+    color: black;
 }

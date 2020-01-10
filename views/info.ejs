@@ -15,7 +15,7 @@
                 <h1 class="display-4 py-3 heading-font">Info</h1>
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h4 class="heading-card heading-font mb-3"> Internet Access</h4>
@@ -23,11 +23,11 @@
                                     <table>
                                         <tr>
                                             <td style="width: 15rem;">Network SSID:</td>
-                                            <td>cuHacking 2020</td>
+                                            <td><%=info.wifi.network%></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
-                                            <td>richcraft</td>
+                                            <td><%=info.wifi.password%></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -45,11 +45,48 @@
                                         </tr>
                                         <tr>
                                             <td>Carleton University Police: </td>
-                                            <td>613-520-4444</td>
+                                            <td><%=info.emergency%></td>
                                         </tr>
                                         <tr>
                                             <td>cuHacking: </td>
                                             <td>info@cuhacking.com</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h4 class="heading-card heading-font mb-3"> Help</h4>
+                                <div class="card-text">
+                                    <%=info.help%>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h4 class="heading-card heading-font mb-3"> Social</h4>
+                                <div class="card-text" style="font-size: large;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 15rem;"><a style="color:#9756D8;"
+                                                    href=<%=info.social.slack%> target="_blank"> <i
+                                                        class="fab fa-slack"></i>
+                                                    &nbsp;&nbsp; Join Slack Here!</a>
+                                            </td>
+                                            <td><a style="color:#9756D8;" href="http://facebook.com/cuhacking"
+                                                    target="_blank"> <i class="fab fa-facebook-square"></i>
+                                                    &nbsp;&nbsp; Facebook</td></a>
+                                        </tr>
+                                        <tr>
+                                            <td><a style="color:#9756D8;" href="http://instagram.com/cuHacking"
+                                                    target="_blank"> <i class="fab fa-instagram"></i>
+                                                    &nbsp;&nbsp; Instagram</td></a>
+                                            <td><a style="color:#9756D8;" href="http://twittter.com/cuHacking"
+                                                    target="_blank"> <i class="fab fa-twitter-square"></i>
+                                                    &nbsp;&nbsp; Twitter</td> </a>
                                         </tr>
                                     </table>
                                 </div>
