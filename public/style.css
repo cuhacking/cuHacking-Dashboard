@@ -7,6 +7,91 @@
     --secondaryColour: #00D0FE;
 }
 
+
+
+#box-1 {
+  align-items: center;
+  justify-content: center;
+ background: white;
+  color: black;
+}
+.gradient-border {
+  --borderWidth: 4px;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #280749, #5073b8, #00D0FE, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+#box-2 {
+    align-items: center;
+    justify-content: center;
+   background: white;
+    color: black;
+  }
+  .gradient-border-2 {
+    --borderWidth: 4px;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+  .gradient-border-2:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #5827b8, #9756D8, #280749, #5073b8, #00D0FE, white);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+
+
+.heading-1 {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 40px;
+    color:#00D0FE;
+}
+
+.heading-2{
+    font-weight: bold;
+
+    font-size: 25px;
+}
+
+.heading-3{
+    font-weight: bold;
+}
+
 html, body {
     font-family: 'Montserrat', sans-serif !important;
     height: 100%;
@@ -15,6 +100,8 @@ html, body {
 .heading-font {
     font-family: 'Reem Kufi', sans-serif;
 }
+
+
 
 .heading-card {
     margin-bottom: 0;
@@ -80,6 +167,20 @@ html, body {
     .profile-container {
         margin-top: 30px;
     }
+
+    .heading-challenges {
+        font-size: 40px;
+        margin-top: 100px;
+    
+    }
+
+    .show-challenge-link{
+        display: none;
+    }
+    .challenges-button{
+        display: block;
+
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -93,6 +194,13 @@ html, body {
         height: 100vh;
         box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.25);
         z-index: 1999;
+    }
+    .show-challenge-link{
+        display: block;
+    }
+    .challenges-button{
+        display: none;
+
     }
 }
 

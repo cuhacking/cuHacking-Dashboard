@@ -185,6 +185,10 @@ app.get('/map', (req, res) => {
     });
 })
 
+app.get('/challenges', (req, res)=>{
+    res.render("challenge.ejs");
+})
+
 app.get("/error", (req, res) => {
     res.render("error.ejs");
 })

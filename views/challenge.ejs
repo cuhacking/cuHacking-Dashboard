@@ -1,0 +1,222 @@
+<% include ./partials/header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+        <% include ./partials/navbar.ejs %>
+
+        <script>
+            // Sets the current page as active in navbar
+            document.getElementById('challenge-link').classList.add('active');
+            document.getElementById('active-box-challenge').classList.add('navigation-link-left-box');
+        </script>
+
+        <div class="col-md-9 col-lg-10 ml-sm-auto pt-3" id="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+
+
+                        <h1 class="display-4 py-3 heading-font heading-challenges">Challenges and Prizes</h1>
+                        <p class="updates-cards-time">All the challenges and their prizes at cuHacking 2020</p>
+                        <div class="heading-1">Internal Prizes</div>
+                        <div class="heading-2"><i class="fas fa-award"></i> Top Three</div>
+                        <ul>
+                            <li>
+                                <div class="heading-3">First place</div>
+                                <div class="gradient-border p-2 m-1" id="box-1">
+                                    The best overall hack; the team that created the project that made everyone go
+                                    "woah!"
+                                    <ul>
+                                        <li>4 x Google Stadia</li>
+                                        <li>4 x $250 Digital Ocean Credits</li>
+                                        <li>4 x Digital Ocean Shirts</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <div class="heading-3">Second place</div>
+                                <div class="gradient-border p-2 m-1" id="box-1">
+
+                                    The second best overall hack; you guys still made everyone go "woah"
+                                    <ul>
+                                        <li>4 x Deloitte Wireless Charging Speaker / Alarm Clocks</li>
+                                        <li>4 x $150 Digital Ocean Credits</li>
+                                        <li>4 x EA games</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <div class="heading-3">Third place</div>
+                                <div class="gradient-border p-2 m-1" id="box-1">
+
+                                    The third best overall hack; your project was astonishing, but amongst stiff
+                                    competition.
+                                    <ul>
+                                        <li>4 x Amazon Echo Dots</li>
+                                        <li>4 x $100 Digital Ocean Credits</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="heading-2"><i class="fas fa-award"></i> Best UI / UX</div>
+                        <!-- <i class="fas fa-star"></i>  -->
+                        Best overall UI / UX; your project is well thought out and easy to use.
+                        <ul>
+                            <li>4 x Logitech G502 HERO Gaming Mouse (Holiday Edition)</li>
+                            <li>4 x Sketch Licenses</li>
+                        </ul>
+
+                        <div class="heading-2"><i class="fas fa-award"></i> Underdog</div>
+                        Best overall hack made by a high school team, or under 18s.
+                        <ul>
+                            <li>
+                                <div>4 x SCS prize pack</div>
+                                <ul>
+                                    <li>(Hoodie, Lanyard, USB thing, and SCS water bottle bag thing)</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <div class="heading-1">External Prizes</div>
+
+                        <div class="heading-2"><i class="fas fa-award"></i> Best of Kotlin [JetBrains]</div>
+                        <div class="gradient-border p-2 m-1" id="box-1">
+
+                            JetBrains wants you to create an innovative project using the Kotlin language. Be creative!
+                            <ul>
+                                <li>JetBrains swag x 4</li>
+                            </ul>
+                        </div>
+                        <div class="heading-2"><i class="fas fa-award"></i> Murder on the 2nd Floor [Martello]</div>
+                        <div class="gradient-border-2 p-2 m-1" id="box-2">
+
+                            "The clock strikes midnight on a dark and stormy night, a murder on the 2nd Floor, Room 210
+                            was
+                            reported
+                            to the local police station ..."
+                            Martello's Murder mystery (more info: <a
+                                href="https://martellotech.com/cuhacking">https://martellotech.com/cuhacking</a>) Can
+                            you figure it out?
+                            <ul>
+                                <li>Gift Basket including a DJI drone, GIGABYTE graphics card, Bose Headset and Nintendo
+                                    Switch Lite
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="heading-2"><i class="fas fa-award"></i> DashBoard [Ross Video]</div>
+                        <div class="gradient-border p-2 m-1" id="box-1">
+
+                            DashBoard is a free and open platform from Ross Video for facility control and monitoring
+                            that
+                            enables
+                            users to quickly build unique, tailored Custom User Interfaces that make complex operations
+                            simple.
+
+                            Examples: Chrome Cast, LIFX, Phillips Hue, Eco B Thermostat, Toaster Oven, IoT.
+                            <ul>
+                                <li>1st: 4 x Sonos Speaker</li>
+                                <li>2nd: 4 x Chrome Cast Ultra</li>
+                            </ul>
+                        </div>
+                        <div class="heading-2"><i class="fas fa-award"></i> [RBC]</div>
+                        <div class="gradient-border-2 p-2 m-1" id="box-2">
+
+                            We are looking for ideas on using social media (Facebook, Twitter, etc..) and websites
+                            (review
+                            feedback,
+                            etc..) to monitor, analyze, and categorize the issues (technical and non-technical) through
+                            customer
+                            feedback. The opportunity is to use open APIs for scanning and analyzing customer feedback
+                            or
+                            creating
+                            new channels for feedback. We also want to know if there is a correlation between negative
+                            feedback and
+                            potential production issues happening at RBC.
+
+                            <ul>
+                                <li> TBD</li>
+                            </ul>
+                        </div>
+                        <div class="heading-1"> MLH Challenges</div>
+
+                        <div class="heading-2">
+                            <i class="fas fa-award"></i> Best use of Google Cloud [MLH]
+                        </div>
+                        Build your hackathon project with a suite of secure storage, powerful compute, and integrated
+                        data
+                        analytics products provided by Google Cloud. See full list of products here: <a
+                            href="https://g.co/cloud">g.co/cloud</a>. Each
+                        winning
+                        team member will receive a Google Home Mini.
+
+                        <ul>
+                            <li>
+                                Prize: Google Home Mini
+                            </li>
+                        </ul>
+
+                        <div class="heading-2">
+                            <i class="fas fa-award"></i> Best Domain Registered with Domain.com [MLH]
+                        </div>
+                        Domain.com provides all the domain services you need from registration to hosting to SSL
+                        certificates
+                        and beyond. Each hacker will receive a FREE domain name and year of domain privacy from
+                        Domain.com for
+                        their project this weekend!
+
+                        <ul>
+                            <li>
+                                Prize: Domain.com Backpacks
+                            </li>
+                        </ul>
+
+                        <div class="heading-2">
+                            <i class="fas fa-award"></i> Best UiPath Automation Hack [MLH]
+                        </div>
+                        Build an automation hack using UiPath! Each winning team member will receive a UiPath/MLH
+                        Branded
+                        Backpack and an opportunity to interview for a UiPath Internship in 2020 with high
+                        recommendation!
+
+                        <ul>
+                            <li>
+                                Prize: Skip the internship line with UiPath and a UiPath/MLH Branded Backpack
+                            </li>
+                        </ul>
+
+                        <div class="heading-2">
+                            <i class="fas fa-award"></i> Best use of MongoDB Atlas [MLH]
+                        </div>
+                        Create a hack using MongoDB Atlas to host a database in the cloud! Automate the provisioning and
+                        deployment process with ease, while focusing all your efforts on your hack. Projects built using
+                        MongoDB
+                        Atlas will be eligible to win an AirCharge Plus.
+
+                        <ul>
+                            <li>
+                                Prize: Branded MongoDB AirCharge Plus
+                            </li>
+                        </ul>
+
+                        <div class="heading-2">
+                            <i class="fas fa-award"></i> Best use of Blockstack [MLH]
+                        </div>
+                        Create an app using the Blockstack Platform. Each winning team member will receive a pair of
+                        Apple
+                        BeatsX Earphones. The opportunity with Blockstack doesn't end with the event. Any app built with
+                        Blockstack during a hackathon that successfully registers for the App Mining program will
+                        receive an
+                        additional $200 reward.
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer.ejs %>
